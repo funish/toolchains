@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/rome/configuration_schema.json",
+  "files": {
+    "ignore": ["*/dist/*"]
+  },
+  "formatter": {
+    "indentStyle": "space"
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "javascript": {
+    "formatter": {
+      "trailingComma": "es5"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "@funish/toolchains",
+  "version": "0.0.0",
+  "description": "Programmatically create unified, standardised tool chains, powered by Funish.",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r prepack",
+    "check": "rome check . --apply-unsafe && pnpm rome format . --write",
+    "format": "prettier --write --list-different . --ignore-path .gitignore",
+    "postinstall": "githooks install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funish/toolchains.git"
+  },
+  "keywords": [
+    "toolchains"
+  ],
+  "author": {
+    "name": "Funish",
+    "email": "official@funish.net",
+    "url": "https://funish.net/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/funish/toolchains/issues"
+  },
+  "homepage": "https://github.com/funish/toolchains#readme",
+  "devDependencies": {
+    "@funish/githooks": "workspace:*",
+    "@funish/githooks-config": "workspace:*",
+    "@funish/lint": "workspace:*",
+    "@types/node": "18.15.3",
+    "lerna": "6.6.1",
+    "prettier": "2.8.4",
+    "rome": "12.0.0",
+    "unbuild": "1.2.0"
+  }
+}

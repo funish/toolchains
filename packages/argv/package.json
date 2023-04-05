@@ -1,0 +1,30 @@
+{
+  "name": "@funish/argv",
+  "version": "0.0.3-edge.0",
+  "description": "Programmatically parse command line parameters, powered by Funish.",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "unbuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funish/toolchains.git"
+  },
+  "keywords": [
+    "argv"
+  ],
+  "author": {
+    "name": "Funish",
+    "email": "official@funish.net",
+    "url": "https://funish.net/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/funish/toolchains/issues"
+  },
+  "homepage": "https://github.com/funish/toolchains#readme"
+}

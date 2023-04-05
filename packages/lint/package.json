@@ -1,0 +1,49 @@
+{
+  "name": "@funish/lint",
+  "version": "0.0.1-edge.8",
+  "description": "Integrated one-click Linter, powered by Funish.",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "lint": "dist/cli.mjs"
+  },
+  "scripts": {
+    "prepack": "unbuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funish/toolchains.git"
+  },
+  "keywords": [
+    "lint",
+    "linter",
+    "eslint",
+    "stylelint",
+    "prettier",
+    "commitlint",
+    "lint-staged"
+  ],
+  "author": {
+    "name": "Funish",
+    "email": "official@funish.net",
+    "url": "https://funish.net/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/funish/toolchains/issues"
+  },
+  "homepage": "https://github.com/funish/toolchains#readme",
+  "dependencies": {
+    "c12": "1.1.2",
+    "cac": "6.7.14",
+    "consola": "2.15.3",
+    "micromatch": "4.0.5",
+    "pkg-types": "1.0.2"
+  },
+  "devDependencies": {
+    "@types/micromatch": "4.0.2"
+  }
+}
