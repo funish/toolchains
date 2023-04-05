@@ -1,0 +1,35 @@
+{
+  "name": "@funish/scaffolding",
+  "version": "0.0.3-edge.0",
+  "description": "Programmatically build scaffolding, powered by Funish.",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "unbuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funish/toolchains.git"
+  },
+  "keywords": [
+    "scaffolding",
+    "handlebars"
+  ],
+  "author": {
+    "name": "Funish",
+    "email": "official@funish.net",
+    "url": "https://funish.net/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/funish/toolchains/issues"
+  },
+  "homepage": "https://github.com/funish/toolchains#readme",
+  "dependencies": {
+    "giget": "1.1.2",
+    "handlebars": "4.7.7"
+  }
+}

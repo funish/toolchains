@@ -1,0 +1,32 @@
+{
+  "name": "@funish/githooks-config",
+  "version": "0.0.1-edge.1",
+  "description": "Shared githooks configuration, powered by Funish.",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "unbuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funish/toolchains.git"
+  },
+  "keywords": [
+    "git",
+    "hooks",
+    "husky"
+  ],
+  "author": {
+    "name": "Funish",
+    "email": "official@funish.net",
+    "url": "https://funish.net/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/funish/toolchains/issues"
+  },
+  "homepage": "https://github.com/funish/toolchains#readme"
+}

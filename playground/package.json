@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "dependencies": {
+    "@funish/argv": "workspace:*",
+    "@funish/bench": "0.0.0",
+    "citty": "0.1.1",
+    "minimist": "1.2.8",
+    "mri": "1.2.0",
+    "yargs-parser": "21.1.1"
+  },
+  "devDependencies": {
+    "@types/benchmark": "2.1.2",
+    "@types/minimist": "1.2.2",
+    "@types/yargs-parser": "21.0.0"
+  }
+}
