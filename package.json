@@ -5,9 +5,10 @@
   "private": true,
   "scripts": {
     "build": "pnpm -r prepack",
+    "dev": "pnpm -r prepack --stub",
     "check": "rome check . --apply-unsafe && pnpm rome format . --write",
     "format": "prettier --write --list-different . --ignore-path .gitignore",
-    "postinstall": "githooks install"
+    "postinstall": "pnpm dev && githooks install"
   },
   "repository": {
     "type": "git",

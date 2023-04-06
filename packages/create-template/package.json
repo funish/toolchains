@@ -2,12 +2,12 @@
   "name": "@funish/create-template",
   "version": "0.0.3-edge.0",
   "description": "Easily create templates, powered by Funish.",
-  "main": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "dist/cli.mjs",
+  "types": "dist/cli.d.ts",
   "files": [
     "dist"
   ],
-  "bin": "dist/index.mjs",
+  "bin": "dist/cli.mjs",
   "scripts": {
     "prepack": "unbuild"
   },
