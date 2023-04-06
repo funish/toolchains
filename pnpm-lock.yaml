@@ -107,7 +107,11 @@ importers:
         specifier: 1.3.31
         version: 1.3.31
 
-  packages/githooks-config: {}
+  packages/githooks-config:
+    devDependencies:
+      "@funish/githooks":
+        specifier: workspace:0.0.4-edge.6
+        version: link:../githooks
 
   packages/lint:
     dependencies:
