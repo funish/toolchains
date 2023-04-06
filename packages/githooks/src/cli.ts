@@ -38,7 +38,6 @@ cli.command({
     {
       name: "hooks",
       description: "Git hooks to set up.",
-      alias: "h",
     },
     {
       name: "script",
