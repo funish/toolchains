@@ -1,12 +1,15 @@
 {
   "name": "@funish/scaffolding",
-  "version": "0.0.3-edge.2",
+  "version": "0.0.3-edge.3",
   "description": "Programmatically build scaffolding, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "bin": {
+    "scaffolding": "dist/cli.mjs"
+  },
   "scripts": {
     "prepack": "unbuild"
   },
