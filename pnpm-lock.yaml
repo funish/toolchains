@@ -152,7 +152,7 @@ importers:
         version: link:../packages/argv
       "@funish/bench":
         specifier: 0.0.0
-        version: link:../packages/bench
+        version: 0.0.0
       citty:
         specifier: 0.1.1
         version: 0.1.1
@@ -717,6 +717,15 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@funish/bench@0.0.0:
+    resolution:
+      {
+        integrity: sha512-GT91nDmP7Uc0CnAeZ71u2BziAUsq6tunGv39/EfAx29/diawtOstORl13OjgeO4OS11eh2amx7mj7eYpTJwdbQ==,
+      }
+    dependencies:
+      unenv: 1.2.2
+    dev: false
 
   /@gar/promisify@1.1.3:
     resolution:
