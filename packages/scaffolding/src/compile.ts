@@ -5,7 +5,7 @@ import {
   readdirSync,
   writeFileSync,
 } from "fs";
-import handlebars from "handlebars";
+import { compile } from "handlebars";
 import { basename, resolve } from "path";
 
 export function compileHandlebarsFile(
@@ -13,9 +13,7 @@ export function compileHandlebarsFile(
   target: string,
   context: Object
 ) {
-  const fileTemplateCompile = handlebars.compile(
-    readFileSync(source).toString()
-  )(context);
+  const fileTemplateCompile = compile(readFileSync(source).toString())(context);
   writeFileSync(resolve(target, basename(source)), fileTemplateCompile);
 }
 
@@ -24,7 +22,7 @@ export function compileHandlebarsDir(
   target: string,
   context: Object
 ) {
-  const dirTemplateCompile = handlebars.compile(source)(context);
+  const dirTemplateCompile = compile(source)(context);
   mkdirSync(resolve(target, dirTemplateCompile), {
     recursive: true,
   });
@@ -42,7 +40,7 @@ export function compileScaffolding(
       compileHandlebarsDir(filename, target, context);
       compileScaffolding(
         resolve(source, filename),
-        resolve(target, handlebars.compile(filename)(context)),
+        resolve(target, compile(filename)(context)),
         context
       );
     } else if (stats.isFile()) {

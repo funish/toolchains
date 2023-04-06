@@ -1,7 +1,7 @@
+import { createScaffolding } from "./scaffolding";
 import { CLI } from "@funish/cli";
-import { createScaffolding } from "@funish/scaffolding";
 
-const cli = new CLI();
+const cli = new CLI("scaffolding");
 
 // Register commands
 cli.command({
@@ -18,7 +18,11 @@ cli.command({
     },
   ],
   action: async (argv) => {
-    createScaffolding(argv.source as string, argv.target as string, {});
+    if (argv.source && argv.target) {
+      createScaffolding(argv.source as string, argv.target as string);
+    } else {
+      cli.help();
+    }
   },
 });
 
