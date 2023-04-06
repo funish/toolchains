@@ -3,7 +3,7 @@ import { readFileSync } from "fs";
 import { parse } from "ini";
 
 // https://git-scm.com/docs/githooks
-const GithooksArray = [
+export const GithooksArray = [
   "applypatch-msg",
   "pre-applypatch",
   "post-applypatch",

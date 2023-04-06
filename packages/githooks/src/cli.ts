@@ -1,4 +1,4 @@
-import { GithooksName } from "./config";
+import { GithooksArray, GithooksName } from "./config";
 import {
   githooksInstall,
   githooksMigrateFromHusky,
@@ -48,7 +48,12 @@ cli.command({
     },
   ],
   action: async (argv) => {
-    await githooksSetup(argv.hooks as GithooksName, argv.script as string);
+    if (argv.hooks && GithooksArray.includes(argv.hooks as GithooksName)) {
+      await githooksSetup(
+        argv.hooks as GithooksName,
+        argv.script ? (argv.script as string) : null
+      );
+    }
   },
 });
 

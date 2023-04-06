@@ -71,7 +71,10 @@ export async function githooksInstall(
   }
 }
 
-export async function githooksSetup(hooks: GithooksName, script?: string) {
+export async function githooksSetup(
+  hooks: GithooksName,
+  script?: string | null
+) {
   const config = await loadGithooksConfig();
   const hooksPath = loadGitConfig().core.hooksPath;
 

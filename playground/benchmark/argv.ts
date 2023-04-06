@@ -1,4 +1,4 @@
-import { parseArgv } from "../packages/argv/src";
+import { parseArgv } from "@funish/argv";
 import { Bench } from "@funish/bench";
 import { parseArgs } from "citty";
 import minimist from "minimist";
