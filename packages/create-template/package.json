@@ -1,6 +1,6 @@
 {
   "name": "@funish/create-template",
-  "version": "0.0.3-edge.0",
+  "version": "0.0.3-edge.1",
   "description": "Easily create templates, powered by Funish.",
   "main": "dist/cli.mjs",
   "types": "dist/cli.d.ts",

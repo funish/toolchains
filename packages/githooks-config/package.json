@@ -1,6 +1,6 @@
 {
   "name": "@funish/githooks-config",
-  "version": "0.0.1-edge.1",
+  "version": "0.0.1-edge.2",
   "description": "Shared githooks configuration, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",

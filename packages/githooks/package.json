@@ -1,6 +1,6 @@
 {
   "name": "@funish/githooks",
-  "version": "0.0.4-edge.5",
+  "version": "0.0.4-edge.6",
   "description": "Programmatically create git hooks, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",

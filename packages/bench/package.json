@@ -1,6 +1,6 @@
 {
   "name": "@funish/bench",
-  "version": "0.0.0",
+  "version": "0.0.1-edge.0",
   "description": "Programmatically create benchmark tests, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",

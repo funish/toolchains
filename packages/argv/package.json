@@ -1,6 +1,6 @@
 {
   "name": "@funish/argv",
-  "version": "0.0.3-edge.0",
+  "version": "0.0.3-edge.1",
   "description": "Programmatically parse command line parameters, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
