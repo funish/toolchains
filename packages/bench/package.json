@@ -30,6 +30,6 @@
   },
   "homepage": "https://github.com/funish/toolchains#readme",
   "dependencies": {
-    "unenv": "1.2.2"
+    "unenv": "1.3.0"
   }
 }
