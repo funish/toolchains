@@ -1,6 +1,6 @@
 {
   "name": "@funish/bump",
-  "version": "0.0.3-edge.1",
+  "version": "0.0.3-edge.2",
   "description": "Programmatically bump version and publish, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",

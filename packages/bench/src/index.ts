@@ -1,5 +1,3 @@
-import process from "unenv/runtime/polyfill/process";
-
 interface BenchOptions {
   times: number;
   unit: "s" | "ms" | "µs" | "ns";

@@ -1,6 +1,6 @@
 {
   "name": "@funish/bench",
-  "version": "0.0.1-edge.0",
+  "version": "0.0.1-edge.1",
   "description": "Programmatically create benchmark tests, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -28,8 +28,5 @@
   "bugs": {
     "url": "https://github.com/funish/toolchains/issues"
   },
-  "homepage": "https://github.com/funish/toolchains#readme",
-  "dependencies": {
-    "unenv": "1.2.2"
-  }
+  "homepage": "https://github.com/funish/toolchains#readme"
 }

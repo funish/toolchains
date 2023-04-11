@@ -30,11 +30,7 @@ importers:
 
   packages/argv: {}
 
-  packages/bench:
-    dependencies:
-      unenv:
-        specifier: 1.2.2
-        version: 1.2.2
+  packages/bench: {}
 
   packages/bump:
     dependencies:
@@ -66,18 +62,6 @@ importers:
       pkg-types:
         specifier: 1.0.2
         version: 1.0.2
-
-  packages/create-template:
-    dependencies:
-      "@funish/cli":
-        specifier: workspace:*
-        version: link:../cli
-      "@funish/prompt":
-        specifier: workspace:*
-        version: link:../prompt
-      "@funish/scaffolding":
-        specifier: workspace:*
-        version: link:../scaffolding
 
   packages/githooks:
     dependencies:
@@ -121,18 +105,12 @@ importers:
       c12:
         specifier: 1.1.2
         version: 1.1.2
-      cac:
-        specifier: 6.7.14
-        version: 6.7.14
       consola:
         specifier: 2.15.3
         version: 2.15.3
       micromatch:
         specifier: 4.0.5
         version: 4.0.5
-      pkg-types:
-        specifier: 1.0.2
-        version: 1.0.2
     devDependencies:
       "@types/micromatch":
         specifier: 4.0.2
@@ -143,10 +121,10 @@ importers:
   packages/scaffolding:
     dependencies:
       "@funish/cli":
-        specifier: workspace:0.0.3-edge.1
+        specifier: workspace:*
         version: link:../cli
       "@funish/prompt":
-        specifier: workspace:0.0.3-edge.1
+        specifier: workspace:*
         version: link:../prompt
       c12:
         specifier: 1.1.2

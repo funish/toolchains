@@ -6,7 +6,7 @@
   "scripts": {
     "build": "pnpm -r prepack",
     "dev": "pnpm -r prepack --stub",
-    "check": "rome check . --apply-unsafe && pnpm rome format . --write",
+    "check": "rome check . --apply-unsafe && rome format . --write",
     "format": "prettier --write --list-different . --ignore-path .gitignore",
     "postinstall": "pnpm build && githooks install"
   },
