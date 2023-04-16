@@ -1,6 +1,6 @@
 {
   "name": "@funish/prompt",
-  "version": "0.0.3-edge.2",
+  "version": "0.0.3",
   "description": "Programmatically create interactive prompts, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",

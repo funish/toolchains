@@ -1,6 +1,6 @@
 {
   "name": "@funish/scaffolding",
-  "version": "0.0.3-edge.3",
+  "version": "0.0.3",
   "description": "Programmatically build scaffolding, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
