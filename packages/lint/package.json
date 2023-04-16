@@ -38,7 +38,7 @@
   "homepage": "https://github.com/funish/toolchains#readme",
   "dependencies": {
     "@funish/cli": "workspace:*",
-    "c12": "1.1.2",
+    "c12": "1.2.0",
     "consola": "2.15.3",
     "micromatch": "4.0.5"
   },

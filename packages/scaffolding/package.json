@@ -34,7 +34,7 @@
   "dependencies": {
     "@funish/cli": "workspace:*",
     "@funish/prompt": "workspace:*",
-    "c12": "1.1.2",
+    "c12": "1.2.0",
     "giget": "1.1.2",
     "handlebars": "4.7.7"
   }
