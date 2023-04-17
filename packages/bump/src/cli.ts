@@ -1,5 +1,4 @@
-import { bumpPublish } from "./publish";
-import { bumpVersion } from "./version";
+import { bumpPublish, bumpVersion } from ".";
 import { CLI } from "@funish/cli";
 import { ReleaseType } from "semver";
 

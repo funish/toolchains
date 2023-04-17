@@ -7,13 +7,17 @@ export interface Prompt {
   validate: (answer: string) => boolean;
 }
 
+export interface NestedObject {
+  [key: string]: string | boolean | NestedObject;
+}
+
 export function createPrompt(prompts: Prompt[]) {
   const rl = createInterface({
     input: process.stdin,
     output: process.stdout,
   });
 
-  const answers: Object = {};
+  const answers: NestedObject = {};
 
   return new Promise((resolve) => {
     const promptNext = (index: number) => {
@@ -53,13 +57,13 @@ export function createPrompt(prompts: Prompt[]) {
   });
 }
 
-export function mergeAnswers(object: Object) {
+export function mergeAnswers(object: NestedObject) {
   const result = {};
 
   for (const key in object) {
     const value = object[key];
     const keys = key.split(".");
-    let current = result;
+    let current: NestedObject = result;
 
     for (let i = 0; i < keys.length; i++) {
       const key = keys[i];
@@ -72,7 +76,7 @@ export function mergeAnswers(object: Object) {
           current[key] = {};
         }
 
-        current = current[key];
+        current = current[key] as NestedObject;
       }
     }
   }

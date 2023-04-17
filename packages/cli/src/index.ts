@@ -46,10 +46,15 @@ export class CLI {
     this.commands.push(command);
 
     const argv = this.argv({
-      alias: command.options?.reduce((acc, option) => {
-        acc[option.name] = option.alias;
-        return acc;
-      }, {}),
+      alias: command.options?.reduce(
+        (acc: { [key: string]: string }, option) => {
+          if (option.alias) {
+            acc[option.name] = option.alias;
+          }
+          return acc;
+        },
+        {}
+      ),
       default: command.default,
     });
 

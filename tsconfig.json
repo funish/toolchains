@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "paths": {
+      "@funish/argv": ["./packages/argv/src/index.ts"],
+      "@funish/bench": ["./packages/bench/src/index.ts"],
+      "@funish/bump": ["./packages/bump/src/index.ts"],
+      "@funish/cli": ["./packages/cli/src/index.ts"],
+      "@funish/githooks": ["./packages/githooks/src/index.ts"],
+      "@funish/githooks-config": ["./packages/githooks-config/src/index.ts"],
+      "@funish/lint": ["./packages/lint/src/index.ts"],
+      "@funish/prompt": ["./packages/prompt/src/index.ts"],
+      "@funish/scaffolding": ["./packages/scaffolding/src/index.ts"]
+    }
+  }
+}

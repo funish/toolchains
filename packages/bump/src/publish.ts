@@ -29,7 +29,7 @@ export async function bumpPublish(
       {
         name: "publish",
         message: `Are you sure you want to publish ${version} to latest?`,
-        default: "n",
+        default: "y",
         validate: (answer) => {
           if (answer === "y" || answer === "yes") {
             npm(["publish", "--access", "public"]);

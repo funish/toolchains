@@ -1,7 +1,7 @@
 import { loadLintConfig } from "./config";
 import { git } from "./git";
 import { execSync } from "child_process";
-import micromatch from "micromatch";
+import { isMatch } from "micromatch";
 import { basename } from "path";
 
 export interface stagedLintConfig {
@@ -26,7 +26,7 @@ export async function stagedLint(config?: stagedLintConfig) {
 
   for (const key in loadStagedLintConfig) {
     for (const file of files) {
-      if (micromatch.isMatch(basename(file), key)) {
+      if (isMatch(basename(file), key)) {
         execSync(loadStagedLintConfig[key], { stdio: "inherit" });
         git(["add", "."]);
         break;

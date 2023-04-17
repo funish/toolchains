@@ -31,5 +31,8 @@
   "homepage": "https://github.com/funish/toolchains#readme",
   "devDependencies": {
     "@funish/githooks": "workspace:*"
+  },
+  "peerDependencies": {
+    "@funish/githooks": "workspace:*"
   }
 }

@@ -8,7 +8,7 @@
     "dev": "pnpm -r prepack --stub",
     "check": "rome check . --apply-unsafe && rome format . --write",
     "format": "prettier --write --list-different . --ignore-path .gitignore",
-    "postinstall": "pnpm build && githooks install"
+    "postinstall": "pnpm dev && githooks install"
   },
   "repository": {
     "type": "git",

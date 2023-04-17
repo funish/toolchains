@@ -8,6 +8,8 @@ export interface commitMsgLintConfigRules {
   rules?: string[];
 }
 
+export type commitMsgLintConfigKey = keyof commitMsgLintConfig;
+
 export interface commitMsgLintConfig {
   type?: RegExp | commitMsgLintConfigRules;
   scope?: RegExp | commitMsgLintConfigRules;
@@ -25,6 +27,8 @@ export const commitMsgLintConfigRulesRegexp = {
   phrasecase: /^[a-z]+.+[^.]$/,
   semver:
     /^(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)\.(?<patch>0|[1-9]\d*)(?:-(?<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/,
+} as {
+  [key: string]: RegExp;
 };
 
 export const commitMsgRaw = existsSync(".git/COMMIT_EDITMSG")
@@ -35,18 +39,19 @@ export const commitMsgRaw = existsSync(".git/COMMIT_EDITMSG")
 export const commitMsgRegexp =
   /(?<type>\w+)(\((?<scope>.+)\))?(?<breaking>!)?: (?<description>.+)/;
 
-export const commitMsg = commitMsgRaw.match(commitMsgRegexp)
-  ?.groups as unknown as Array<string>;
+export const commitMsg = commitMsgRaw.match(commitMsgRegexp)?.groups as {
+  [key in commitMsgLintConfigKey]: string;
+};
 
 export async function commitMsgLint(config?: commitMsgLintConfig) {
   const loadCommitMsgLint = config || (await loadLintConfig()).commitMsg;
 
-  if (commitMsgRegexp.test(commitMsgRaw)) {
+  if (loadCommitMsgLint && commitMsgRegexp.test(commitMsgRaw)) {
     for (const key in loadCommitMsgLint) {
       if (Object.prototype.hasOwnProperty.call(loadCommitMsgLint, key)) {
-        const element = loadCommitMsgLint[key];
+        const element = loadCommitMsgLint[key as commitMsgLintConfigKey];
         if (element instanceof RegExp) {
-          if (!element.test(commitMsg[key])) {
+          if (!element.test(commitMsg[key as commitMsgLintConfigKey])) {
             consola.error(
               `Commit message ${key} does not match the regular expression ${element}.`
             );
@@ -54,7 +59,9 @@ export async function commitMsgLint(config?: commitMsgLintConfig) {
           }
         } else if (typeof element === "object") {
           if (element.enum) {
-            if (!element.enum.includes(commitMsg[key])) {
+            if (
+              !element.enum.includes(commitMsg[key as commitMsgLintConfigKey])
+            ) {
               consola.error(
                 `Commit message ${key} does not match the enum ${element.enum}.`
               );
@@ -62,7 +69,11 @@ export async function commitMsgLint(config?: commitMsgLintConfig) {
             }
           } else if (element.rules) {
             for (const rule of element.rules) {
-              if (!commitMsgLintConfigRulesRegexp[rule].test(commitMsg[key])) {
+              if (
+                !commitMsgLintConfigRulesRegexp[rule].test(
+                  commitMsg[key as commitMsgLintConfigKey]
+                )
+              ) {
                 consola.error(
                   `Commit message ${key} does not match the rule ${rule}.`
                 );
