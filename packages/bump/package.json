@@ -34,7 +34,7 @@
   "dependencies": {
     "@funish/cli": "workspace:*",
     "@funish/prompt": "workspace:*",
-    "nypm": "0.1.0",
+    "nypm": "0.2.0",
     "pkg-types": "1.0.2",
     "semver": "7.3.8"
   },
