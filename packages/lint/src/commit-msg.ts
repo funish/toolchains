@@ -89,7 +89,7 @@ export async function commitMsgLint(config?: commitMsgLintConfig) {
         }
       }
     }
-  } else {
+  } else if (!commitMsgRaw.startsWith("Merge branch")) {
     consola.error(
       "Commit message does not match the conventional commit format."
     );
