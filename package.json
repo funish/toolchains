@@ -32,7 +32,7 @@
     "@funish/githooks-config": "workspace:*",
     "@funish/lint": "workspace:*",
     "@types/node": "18.15.3",
-    "lerna": "6.6.1",
+    "lerna": "6.6.2",
     "prettier": "2.8.4",
     "rome": "12.0.0",
     "unbuild": "1.2.0"
