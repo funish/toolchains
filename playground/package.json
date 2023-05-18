@@ -2,7 +2,7 @@
   "private": true,
   "dependencies": {
     "@funish/argv": "workspace:*",
-    "@funish/bench": "0.0.0",
+    "@funish/bench": "workspace:*",
     "citty": "0.1.1",
     "minimist": "1.2.8",
     "mri": "1.2.0",
