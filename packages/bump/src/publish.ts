@@ -10,12 +10,15 @@ export async function bumpPublish(
   }
 ) {
   const npm = async (args: string[]) => {
-    execSync(
-      `${
-        (await detectPackageManager(options.path || process.cwd())).name
-      } ${args.join(" ")}`,
-      { stdio: "inherit" }
+    const detectedPackageManager = await detectPackageManager(
+      options.path || process.cwd()
     );
+    if (!detectedPackageManager) {
+      throw new Error("Could not detect a package manager.");
+    }
+    execSync(`${detectedPackageManager.name} ${args.join(" ")}`, {
+      stdio: "inherit",
+    });
   };
 
   const { name, version } = await readPackageJSON(

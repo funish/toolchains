@@ -1,6 +1,6 @@
 {
   "name": "@funish/githooks",
-  "version": "0.0.4",
+  "version": "0.0.5-edge.0",
   "description": "Programmatically create git hooks, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -35,7 +35,7 @@
   "homepage": "https://github.com/funish/toolchains#readme",
   "dependencies": {
     "@funish/cli": "workspace:*",
-    "c12": "1.2.0",
+    "c12": "1.4.1",
     "cac": "6.7.14",
     "consola": "2.15.3",
     "defu": "6.1.2",

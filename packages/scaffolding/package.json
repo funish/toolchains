@@ -1,6 +1,6 @@
 {
   "name": "@funish/scaffolding",
-  "version": "0.0.3",
+  "version": "0.0.4-edge.0",
   "description": "Programmatically build scaffolding, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -34,7 +34,7 @@
   "dependencies": {
     "@funish/cli": "workspace:*",
     "@funish/prompt": "workspace:*",
-    "c12": "1.2.0",
+    "c12": "1.4.1",
     "giget": "1.1.2",
     "handlebars": "4.7.7"
   }
