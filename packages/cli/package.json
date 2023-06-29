@@ -29,6 +29,6 @@
   "homepage": "https://github.com/funish/toolchains#readme",
   "dependencies": {
     "@funish/argv": "workspace:*",
-    "pkg-types": "1.0.2"
+    "pkg-types": "1.0.3"
   }
 }
