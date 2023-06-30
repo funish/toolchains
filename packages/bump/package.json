@@ -1,6 +1,6 @@
 {
   "name": "@funish/bump",
-  "version": "0.0.4-edge.0",
+  "version": "0.0.4-edge.1",
   "description": "Programmatically bump version and publish, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -9,6 +9,12 @@
   ],
   "bin": {
     "bump": "dist/cli.mjs"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
   },
   "scripts": {
     "prepack": "unbuild"

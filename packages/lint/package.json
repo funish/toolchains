@@ -1,6 +1,6 @@
 {
   "name": "@funish/lint",
-  "version": "0.0.2-edge.1",
+  "version": "0.0.2-edge.2",
   "description": "Integrated one-click Linter, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -9,6 +9,12 @@
   ],
   "bin": {
     "lint": "dist/cli.mjs"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
   },
   "scripts": {
     "prepack": "unbuild"
