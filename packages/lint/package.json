@@ -45,7 +45,7 @@
   "dependencies": {
     "@funish/cli": "workspace:*",
     "c12": "1.4.2",
-    "consola": "2.15.3",
+    "consola": "3.2.3",
     "micromatch": "4.0.5"
   },
   "devDependencies": {
