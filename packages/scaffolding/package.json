@@ -42,6 +42,6 @@
     "@funish/prompt": "workspace:*",
     "c12": "1.4.2",
     "giget": "1.1.2",
-    "handlebars": "4.7.7"
+    "handlebars": "4.7.8"
   }
 }
