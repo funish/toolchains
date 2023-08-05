@@ -31,7 +31,7 @@
     "@funish/githooks": "workspace:*",
     "@funish/githooks-config": "workspace:*",
     "@funish/lint": "workspace:*",
-    "@types/node": "18.17.2",
+    "@types/node": "18.17.3",
     "lerna": "7.1.4",
     "prettier": "3.0.1",
     "rome": "12.1.3",
