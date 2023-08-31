@@ -14,7 +14,7 @@ const ConfigDefaults = defineScaffoldingConfig({});
 
 export async function loadScaffoldingConfig(
   cwd?: string,
-  overrides?: Partial<ScaffoldingConfig>
+  overrides?: Partial<ScaffoldingConfig>,
 ): Promise<ScaffoldingConfig> {
   const { config } = await loadConfig<ScaffoldingConfig>({
     cwd,

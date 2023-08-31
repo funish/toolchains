@@ -35,7 +35,7 @@ createScaffolding(
   {
     // context, e.g. { foo: "bar" }
   },
-  options
+  options,
 );
 ```
 

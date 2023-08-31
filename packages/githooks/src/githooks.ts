@@ -18,7 +18,7 @@ const git = (args: string[]): SpawnSyncReturns<Buffer> =>
 
 export async function githooksInstall(
   path?: string,
-  isSaveScript?: boolean | string
+  isSaveScript?: boolean | string,
 ) {
   const config = await loadGithooksConfig();
   const hooksPath =
@@ -38,7 +38,7 @@ export async function githooksInstall(
         `#!/bin/sh\n${config.hooks[ConfigHooks]}`,
         {
           mode: 0o0755,
-        }
+        },
       );
     }
 
@@ -50,7 +50,7 @@ export async function githooksInstall(
     if (isSaveScript) {
       typeof isSaveScript === "string"
         ? isSaveScript
-        : (isSaveScript = "postinstall");
+        : isSaveScript === "postinstall";
       path === ".githooks"
         ? saveScript(`${isSaveScript}`, "githooks install")
         : saveScript(`${isSaveScript}`, `githooks install ${hooksPath}`);
@@ -73,22 +73,22 @@ export async function githooksInstall(
 
 export async function githooksSetup(
   hooks: GithooksName,
-  script?: string | null
+  script?: string | null,
 ) {
   const config = await loadGithooksConfig();
   const hooksPath = loadGitConfig().core.hooksPath;
 
   if (config.hooks) {
     consola.error(
-      "Setup failed, please change the hooks field in the configuration file to replace the setup command."
+      "Setup failed, please change the hooks field in the configuration file to replace the setup command.",
     );
   } else if (!hooksPath) {
     consola.error(
-      "Git hooks are not installed (try running githooks install [dir])."
+      "Git hooks are not installed (try running githooks install [dir]).",
     );
   } else if (!existsSync(hooksPath)) {
     consola.error(
-      `The ${hooksPath} directory does not exist (try running githooks install [dir]).`
+      `The ${hooksPath} directory does not exist (try running githooks install [dir]).`,
     );
   } else {
     script
@@ -121,16 +121,16 @@ export async function githooksMigrateFromHusky() {
 
   if (config.hooks) {
     consola.error(
-      "There are hooks in the configuration file that conflict with the husky migration process."
+      "There are hooks in the configuration file that conflict with the husky migration process.",
     );
   } else if (!existsSync(hooksPath) || readdirSync(hooksPath).length === 0) {
     renameSync(".husky", hooksPath);
     consola.success(
-      "Migration is complete, after that please deal with any conflicts manually."
+      "Migration is complete, after that please deal with any conflicts manually.",
     );
   } else {
     consola.error(
-      `The ${hooksPath} directory already exists, please try to migrate it manually.`
+      `The ${hooksPath} directory already exists, please try to migrate it manually.`,
     );
   }
 }

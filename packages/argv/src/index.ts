@@ -11,7 +11,7 @@ export function parseArgv(
       [key: string]: string | boolean | number;
     };
     parser?: "split" | "regexp";
-  }
+  },
 ) {
   const parser = options?.parser || "split";
   const args = parser === "regexp" ? parserRegexp(argv) : parserSplit(argv);

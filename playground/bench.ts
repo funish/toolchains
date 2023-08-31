@@ -20,12 +20,12 @@ bench
   .add("reduce", () => {
     const sum = Array.from({ length: 100 }, (_, i) => i).reduce(
       (a, b) => a + b,
-      0
+      0,
     );
   })
   .add("sort", () => {
     const sorted = Array.from({ length: 100 }, (_, i) => i).sort(
-      (a, b) => a - b
+      (a, b) => a - b,
     );
   });
 

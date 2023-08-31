@@ -15,22 +15,22 @@ if (
     JSON.stringify(
       parseArgv(argv, {
         parser: "regexp",
-      })
-    )
+      }),
+    ),
   )
 ) {
   console.log("\nparserRegexp:");
   console.log(
     parseArgv(argv, {
       parser: "regexp",
-    })
+    }),
   );
 }
 
 if (
   !Object.is(
     JSON.stringify(parseArgv(argv)),
-    JSON.stringify(parseArgs(argv, {}))
+    JSON.stringify(parseArgs(argv, {})),
   )
 ) {
   console.log("\ncitty:");

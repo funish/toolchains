@@ -7,11 +7,11 @@ import { prerelease } from "semver";
 export async function bumpPublish(
   options: { path?: string; tag?: string } = {
     path: process.cwd(),
-  }
+  },
 ) {
   const npm = async (args: string[]) => {
     const detectedPackageManager = await detectPackageManager(
-      options.path || process.cwd()
+      options.path || process.cwd(),
     );
     if (!detectedPackageManager) {
       throw new Error("Could not detect a package manager.");
@@ -22,7 +22,7 @@ export async function bumpPublish(
   };
 
   const { name, version } = await readPackageJSON(
-    await resolvePackageJSON(options.path)
+    await resolvePackageJSON(options.path),
   );
 
   const pre = prerelease(version as string);

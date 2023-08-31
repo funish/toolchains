@@ -12,7 +12,7 @@ export class Bench {
     options: Partial<BenchOptions> = {
       times: 1e3,
       unit: "ns",
-    }
+    },
   ) {
     this.times = options.times || 1e3;
     this.unit = options.unit || "ns";
@@ -40,8 +40,8 @@ export class Bench {
     const median = stats[Math.floor(stats.length / 2)];
 
     const standardDeviation = Math.sqrt(
-      stats.map((x) => Math.pow(x - average, 2)).reduce((a, b) => a + b, 0) /
-        stats.length
+      stats.map((x) => (x - average) ** 2).reduce((a, b) => a + b, 0) /
+        stats.length,
     );
 
     // Convert to the specified unit

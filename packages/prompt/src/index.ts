@@ -49,7 +49,7 @@ export function createPrompt(prompts: Prompt[]) {
             answers[currentPrompt.name] = validatedAnswer;
             promptNext(index + 1);
           }
-        }
+        },
       );
     };
 

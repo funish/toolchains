@@ -30,7 +30,7 @@ export class CLI {
 
   private async getPackageJSON() {
     const pkg = await readPackageJSON(
-      await resolvePackageJSON(dirname(process.argv[1]))
+      await resolvePackageJSON(dirname(process.argv[1])),
     );
     return pkg;
   }
@@ -53,7 +53,7 @@ export class CLI {
           }
           return acc;
         },
-        {}
+        {},
       ),
       default: command.default,
     });
@@ -61,10 +61,8 @@ export class CLI {
     if (
       (command.name &&
         argv._.includes(command.name) &&
-        (argv["help"] || argv["h"])) ||
-      (command.alias &&
-        argv._.includes(command.alias) &&
-        (argv["help"] || argv["h"]))
+        (argv.help || argv.h)) ||
+      (command.alias && argv._.includes(command.alias) && (argv.help || argv.h))
     ) {
       // print help
       console.log(`\nUsage: ${this.name} ${command.name} [options]`);
@@ -79,7 +77,7 @@ export class CLI {
           `  ${option.alias ? `-${option.alias}, ` : ""}--${option.name} ${
             (length > 0 ? "\x20".repeat(length) : "\n" + "\x20".repeat(24)) +
             option.description
-          }`
+          }`,
         );
       });
     } else if (
@@ -105,7 +103,7 @@ export class CLI {
       ],
       action: async () => {
         console.log(
-          `${this.name}/${version || (await this.getPackageJSON()).version}`
+          `${this.name}/${version || (await this.getPackageJSON()).version}`,
         );
       },
     });
@@ -135,7 +133,7 @@ export class CLI {
                 (length > 0
                   ? "\x20".repeat(length)
                   : "\n" + "\x20".repeat(27)) + command.description
-              }`
+              }`,
             );
           }
         });
@@ -155,7 +153,7 @@ export class CLI {
                   (length > 0
                     ? "\x20".repeat(length)
                     : "\n" + "\x20".repeat(24)) + option.description
-                }`
+                }`,
               );
             });
           }

@@ -43,7 +43,7 @@ const ConfigDefaults = defineLintConfig({
 
 export async function loadLintConfig(
   cwd?: string,
-  overrides?: Partial<LintConfig>
+  overrides?: Partial<LintConfig>,
 ): Promise<LintConfig> {
   const { config } = await loadConfig<LintConfig>({
     cwd,

@@ -7,7 +7,7 @@ export async function createScaffolding(
   source: string,
   target: string,
   context?: Object,
-  options?: DownloadTemplateOptions
+  options?: DownloadTemplateOptions,
 ) {
   const { dir } = await downloadTemplate(source, options);
   const prompts = (await loadScaffoldingConfig(dir)).prompts as Object;

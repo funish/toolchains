@@ -55,7 +55,7 @@ const ConfigDefaults = defineGithooksConfig({
 
 export async function loadGithooksConfig(
   cwd?: string,
-  overrides?: Partial<GithooksConfig>
+  overrides?: Partial<GithooksConfig>,
 ): Promise<GithooksConfig> {
   const { config } = await loadConfig<GithooksConfig>({
     cwd,

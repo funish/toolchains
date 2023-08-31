@@ -50,7 +50,7 @@ cli.command({
     if (argv.hooks && GithooksArray.includes(argv.hooks as GithooksName)) {
       await githooksSetup(
         argv.hooks as GithooksName,
-        argv.script ? (argv.script as string) : null
+        argv.script ? (argv.script as string) : null,
       );
     }
   },

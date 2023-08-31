@@ -11,7 +11,7 @@ import { basename, resolve } from "path";
 export function compileHandlebarsFile(
   source: string,
   target: string,
-  context: Object
+  context: Object,
 ) {
   const fileTemplateCompile = compile(readFileSync(source).toString())(context);
   writeFileSync(resolve(target, basename(source)), fileTemplateCompile);
@@ -20,7 +20,7 @@ export function compileHandlebarsFile(
 export function compileHandlebarsDir(
   source: string,
   target: string,
-  context: Object
+  context: Object,
 ) {
   const dirTemplateCompile = compile(source)(context);
   mkdirSync(resolve(target, dirTemplateCompile), {
@@ -31,7 +31,7 @@ export function compileHandlebarsDir(
 export function compileScaffolding(
   source: string,
   target: string,
-  context: Object
+  context: Object,
 ) {
   mkdirSync(target, { recursive: true });
   readdirSync(source).forEach((filename) => {
@@ -41,7 +41,7 @@ export function compileScaffolding(
       compileScaffolding(
         resolve(source, filename),
         resolve(target, compile(filename)(context)),
-        context
+        context,
       );
     } else if (stats.isFile()) {
       compileHandlebarsFile(resolve(source, filename), target, context);

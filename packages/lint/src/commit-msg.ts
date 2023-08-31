@@ -53,7 +53,7 @@ export async function commitMsgLint(config?: commitMsgLintConfig) {
         if (element instanceof RegExp) {
           if (!element.test(commitMsg[key as commitMsgLintConfigKey])) {
             consola.error(
-              `Commit message ${key} does not match the regular expression ${element}.`
+              `Commit message ${key} does not match the regular expression ${element}.`,
             );
             process.exit(1);
           }
@@ -63,7 +63,7 @@ export async function commitMsgLint(config?: commitMsgLintConfig) {
               !element.enum.includes(commitMsg[key as commitMsgLintConfigKey])
             ) {
               consola.error(
-                `Commit message ${key} does not match the enum ${element.enum}.`
+                `Commit message ${key} does not match the enum ${element.enum}.`,
               );
               process.exit(1);
             }
@@ -71,18 +71,18 @@ export async function commitMsgLint(config?: commitMsgLintConfig) {
             for (const rule of element.rules) {
               if (
                 !commitMsgLintConfigRulesRegexp[rule].test(
-                  commitMsg[key as commitMsgLintConfigKey]
+                  commitMsg[key as commitMsgLintConfigKey],
                 )
               ) {
                 consola.error(
-                  `Commit message ${key} does not match the rule ${rule}.`
+                  `Commit message ${key} does not match the rule ${rule}.`,
                 );
                 process.exit(1);
               }
             }
           } else {
             consola.error(
-              "Commit message does not match the conventional commit format."
+              "Commit message does not match the conventional commit format.",
             );
             process.exit(1);
           }
@@ -91,7 +91,7 @@ export async function commitMsgLint(config?: commitMsgLintConfig) {
     }
   } else if (!commitMsgRaw.startsWith("Merge branch")) {
     consola.error(
-      "Commit message does not match the conventional commit format."
+      "Commit message does not match the conventional commit format.",
     );
     process.exit(1);
   }
