@@ -5,7 +5,7 @@ interface BenchOptions {
 
 function now() {
   return typeof window !== "undefined"
-    ? window.performance.now()
+    ? window.performance.now() * 1e6
     : Number(process.hrtime.bigint());
 }
 
