@@ -3,6 +3,12 @@ interface BenchOptions {
   unit: "s" | "ms" | "µs" | "ns";
 }
 
+function now() {
+  return typeof window !== "undefined"
+    ? window.performance.now()
+    : Number(process.hrtime.bigint());
+}
+
 export class Bench {
   times: number;
   unit: "s" | "ms" | "µs" | "ns";
@@ -23,10 +29,10 @@ export class Bench {
     const stats = [] as number[];
 
     for (let i = 0; i < this.times; i++) {
-      const start = process.hrtime.bigint();
+      const start = now();
       fn();
-      const end = process.hrtime.bigint();
-      stats.push(Number(end - start));
+      const end = now();
+      stats.push(end - start);
     }
 
     const total = stats.reduce((a, b) => a + b, 0);
