@@ -150,8 +150,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/bench
       citty:
-        specifier: 0.1.2
-        version: 0.1.2
+        specifier: 0.1.4
+        version: 0.1.4
       minimist:
         specifier: 1.2.8
         version: 1.2.8
@@ -1898,8 +1898,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /citty@0.1.2:
-    resolution: {integrity: sha512-Me9nf0/BEmMOnuQzMOVXgpzkMUNbd0Am8lTl/13p0aRGAoLGk5T5sdet/42CrIGmWdG67BgHUhcKK1my1ujUEg==}
+  /citty@0.1.4:
+    resolution: {integrity: sha512-Q3bK1huLxzQrvj7hImJ7Z1vKYJRPQCDnd0EjXfHMidcjecGOMuLrmuQmtWmFkuKLcMThlGh1yCKG8IEc6VeNXQ==}
     dependencies:
       consola: 3.2.3
 
@@ -3733,7 +3733,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      citty: 0.1.2
+      citty: 0.1.4
       defu: 6.1.2
       esbuild: 0.18.20
       fs-extra: 11.1.1
@@ -5138,7 +5138,7 @@ packages:
       '@rollup/plugin-replace': 5.0.2(rollup@3.29.1)
       '@rollup/pluginutils': 5.0.4(rollup@3.29.1)
       chalk: 5.3.0
-      citty: 0.1.2
+      citty: 0.1.4
       consola: 3.2.3
       defu: 6.1.2
       esbuild: 0.19.2
