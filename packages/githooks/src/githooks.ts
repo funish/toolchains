@@ -48,12 +48,11 @@ export async function githooksInstall(
     git(["config", "core.hooksPath", hooksPath]);
 
     if (isSaveScript) {
-      typeof isSaveScript === "string"
-        ? isSaveScript
-        : isSaveScript === "postinstall";
+      const savedScript =
+        typeof isSaveScript === "string" ? isSaveScript : "postinstall";
       path === ".githooks"
-        ? saveScript(`${isSaveScript}`, "githooks install")
-        : saveScript(`${isSaveScript}`, `githooks install ${hooksPath}`);
+        ? saveScript(`${savedScript}`, "githooks install")
+        : saveScript(`${savedScript}`, `githooks install ${hooksPath}`);
     }
 
     consola.success(`Git hooks are installed in the ${hooksPath} directory.`);
