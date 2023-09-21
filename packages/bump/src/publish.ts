@@ -12,6 +12,9 @@ export async function bumpPublish(
   const npm = async (args: string[]) => {
     const detectedPackageManager = await detectPackageManager(
       options.path || process.cwd(),
+      {
+        includeParentDirs: true,
+      },
     );
     if (!detectedPackageManager) {
       throw new Error("Could not detect a package manager.");
