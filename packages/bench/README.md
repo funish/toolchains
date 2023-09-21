@@ -39,6 +39,10 @@ bench.add("test", () => {
 bench.print();
 ```
 
+## Interfaces
+
+See it on [JSDoc](https://www.jsdocs.io/package/@funish/bench).
+
 ## License
 
 - [MIT](LICENSE) &copy; [Funish](https://funish.net/)

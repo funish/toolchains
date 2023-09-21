@@ -29,6 +29,7 @@ $ pnpm add -D @funish/githooks
 For unified processes, we prefer to use configuration files to manage certain simple commands. This method is only suitable for fixed configuration management and `githooks install` should be re-run after making changes to the configuration file.
 
 ```ts
+// githooks.config.ts
 import { defineGithooksConfig } from "@funish/githooks";
 
 export default defineGithooksConfig({
@@ -97,6 +98,10 @@ Options:
   -h, --help     Display this message
   -v, --version  Display version number
 ```
+
+## Interfaces
+
+See it on [JSDoc](https://www.jsdocs.io/package/@funish/githooks).
 
 ## Related Efforts
 
