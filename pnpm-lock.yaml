@@ -17,8 +17,8 @@ importers:
         specifier: workspace:*
         version: link:packages/lint
       "@types/node":
-        specifier: 18.17.15
-        version: 18.17.15
+        specifier: 20.6.3
+        version: 20.6.3
       prettier:
         specifier: 3.0.3
         version: 3.0.3
@@ -52,8 +52,8 @@ importers:
         version: 7.5.4
     devDependencies:
       "@types/semver":
-        specifier: 7.5.1
-        version: 7.5.1
+        specifier: 7.5.2
+        version: 7.5.2
 
   packages/cli:
     dependencies:
@@ -159,8 +159,8 @@ importers:
         version: 21.1.1
     devDependencies:
       "@types/benchmark":
-        specifier: 2.1.2
-        version: 2.1.2
+        specifier: 2.1.3
+        version: 2.1.3
       "@types/minimist":
         specifier: 1.2.2
         version: 1.2.2
@@ -1221,10 +1221,10 @@ packages:
     dev: true
     optional: true
 
-  /@types/benchmark@2.1.2:
+  /@types/benchmark@2.1.3:
     resolution:
       {
-        integrity: sha512-EDKtLYNMKrig22jEvhXq8TBFyFgVNSPmDF2b9UzJ7+eylPqdZVo17PCUMkn1jP6/1A/0u78VqYC6VrX6b8pDWA==,
+        integrity: sha512-psuUawgwIy/hSjO4AUDiPBJhJx72e3cBL+YzmVK/5ofRJC02R0NmvrSenGRuSmJc++0j95y2T01xKKNz50FGZw==,
       }
     dev: true
 
@@ -1265,10 +1265,10 @@ packages:
       }
     dev: true
 
-  /@types/node@18.17.15:
+  /@types/node@20.6.3:
     resolution:
       {
-        integrity: sha512-2yrWpBk32tvV/JAd3HNHWuZn/VDN1P+72hWirHnvsvTGSqbANi+kSeuQR9yAHnbvaBvHDsoTdXV0Fe+iRtHLKA==,
+        integrity: sha512-HksnYH4Ljr4VQgEy2lTStbCKv/P590tmPe5HqOnv9Gprffgv5WXAY+Y5Gqniu0GGqeTCUdBnzC3QSrzPkBkAMA==,
       }
     dev: true
 
@@ -1279,10 +1279,10 @@ packages:
       }
     dev: true
 
-  /@types/semver@7.5.1:
+  /@types/semver@7.5.2:
     resolution:
       {
-        integrity: sha512-cJRQXpObxfNKkFAZbJl2yjWtJCqELQIdShsogr1d2MilP8dKD9TE/nEKHkJgUNHdGKCQaf9HbIynuV2csLGVLg==,
+        integrity: sha512-7aqorHYgdNO4DM36stTiGO3DvKoex9TQRwsJU6vMaFGyqpBA1MNZkz+PG3gaNUPpTAOYhT1WR7M1JyA3fbS9Cw==,
       }
     dev: true
 
