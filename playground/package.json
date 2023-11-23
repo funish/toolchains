@@ -11,6 +11,6 @@
   "devDependencies": {
     "@types/benchmark": "2.1.5",
     "@types/minimist": "1.2.5",
-    "@types/yargs-parser": "21.0.1"
+    "@types/yargs-parser": "21.0.3"
   }
 }
