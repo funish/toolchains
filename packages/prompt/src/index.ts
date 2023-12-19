@@ -38,17 +38,16 @@ export function createPrompt(prompts: Prompt[]) {
             answer.length === 0 && currentPrompt.default
               ? currentPrompt.default
               : currentPrompt.validate(answer)
-              ? answer
-              : null;
+                ? answer
+                : null;
 
           if (validatedAnswer === null) {
             console.log("Invalid answer");
             promptNext(index);
             return;
-          } else {
-            answers[currentPrompt.name] = validatedAnswer;
-            promptNext(index + 1);
           }
+          answers[currentPrompt.name] = validatedAnswer;
+          promptNext(index + 1);
         },
       );
     };

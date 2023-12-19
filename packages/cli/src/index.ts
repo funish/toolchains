@@ -1,5 +1,5 @@
-import { parseArgv } from "@funish/argv";
 import { basename, dirname } from "path";
+import { parseArgv } from "@funish/argv";
 import { readPackageJSON, resolvePackageJSON } from "pkg-types";
 
 export interface Command {
@@ -69,17 +69,16 @@ export class CLI {
 
       console.log("\nOptions:");
 
-      command.options?.forEach((option) => {
-        // print option, description, alias
+      for (const option of command.options || []) {
         const length =
           16 - (option.alias?.length || 0) - (option.name?.length || 0);
         console.log(
           `  ${option.alias ? `-${option.alias}, ` : ""}--${option.name} ${
-            (length > 0 ? "\x20".repeat(length) : "\n" + "\x20".repeat(24)) +
+            (length > 0 ? "\x20".repeat(length) : `\n${"\x20".repeat(24)}`) +
             option.description
           }`,
         );
-      });
+      }
     } else if (
       (command.name && argv._.includes(command.name)) ||
       (command.alias && argv._.includes(command.alias)) ||
@@ -121,7 +120,7 @@ export class CLI {
       action: () => {
         console.log(`\nUsage: ${this.name} [command] [options]`);
 
-        this.commands.forEach((command) => {
+        for (const command of this.commands) {
           // print command, description, alias
           // if command.name is not defined, don't print it
           if (command.name) {
@@ -132,17 +131,17 @@ export class CLI {
               `  ${command.alias ? `${command.alias}, ` : ""}${command.name} ${
                 (length > 0
                   ? "\x20".repeat(length)
-                  : "\n" + "\x20".repeat(27)) + command.description
+                  : `\n${"\x20".repeat(27)}`) + command.description
               }`,
             );
           }
-        });
+        }
 
         console.log("\nOptions:");
 
-        this.commands.forEach((command) => {
-          if (!command.name) {
-            command.options?.forEach((option) => {
+        for (const command of this.commands) {
+          if (!command.name && command.options) {
+            for (const option of command.options) {
               // print option, description, alias
               const length =
                 16 - (option.alias?.length || 0) - (option.name?.length || 0);
@@ -152,12 +151,12 @@ export class CLI {
                 } ${
                   (length > 0
                     ? "\x20".repeat(length)
-                    : "\n" + "\x20".repeat(24)) + option.description
+                    : `\n${"\x20".repeat(24)}`) + option.description
                 }`,
               );
-            });
+            }
           }
-        });
+        }
       },
     });
   }

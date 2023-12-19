@@ -1,5 +1,5 @@
-import { createScaffolding } from "./scaffolding";
 import { CLI } from "@funish/cli";
+import { createScaffolding } from "./scaffolding";
 
 const cli = new CLI("scaffolding");
 

@@ -1,5 +1,5 @@
-import { createPrompt } from "@funish/prompt";
 import { execSync } from "child_process";
+import { createPrompt } from "@funish/prompt";
 import { detectPackageManager } from "nypm";
 import { readPackageJSON, resolvePackageJSON } from "pkg-types";
 import { prerelease } from "semver";
@@ -41,9 +41,8 @@ export async function bumpPublish(
             npm(["publish", "--access", "public"]);
             npm(["dist-tag", "add", `${name}@${version}`, "edge"]);
             return true;
-          } else {
-            return false;
           }
+          return false;
         },
       },
     ]);

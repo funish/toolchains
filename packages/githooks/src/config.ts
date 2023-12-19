@@ -1,5 +1,5 @@
-import { loadConfig } from "c12";
 import { readFileSync } from "fs";
+import { loadConfig } from "c12";
 import { parse } from "ini";
 
 // https://git-scm.com/docs/githooks

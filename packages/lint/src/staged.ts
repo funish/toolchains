@@ -1,8 +1,8 @@
+import { execSync } from "child_process";
+import { basename } from "path";
+import micromatch from "micromatch";
 import { loadLintConfig } from "./config";
 import { git } from "./git";
-import { execSync } from "child_process";
-import micromatch from "micromatch";
-import { basename } from "path";
 
 export interface stagedLintConfig {
   [key: string]: string;

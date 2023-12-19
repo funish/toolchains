@@ -1,8 +1,4 @@
-import { GithooksName, loadGitConfig, loadGithooksConfig } from "./config";
-import { saveScript } from "./script";
 import { SpawnSyncReturns, spawnSync } from "child_process";
-import consola from "consola";
-import { defu } from "defu";
 import {
   existsSync,
   mkdirSync,
@@ -11,7 +7,11 @@ import {
   rmSync,
   writeFileSync,
 } from "fs";
+import consola from "consola";
+import { defu } from "defu";
 import { encode } from "ini";
+import { GithooksName, loadGitConfig, loadGithooksConfig } from "./config";
+import { saveScript } from "./script";
 
 const git = (args: string[]): SpawnSyncReturns<Buffer> =>
   spawnSync("git", args, { stdio: "inherit" });

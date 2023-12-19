@@ -1,8 +1,8 @@
-import { parseArgv } from "../packages/argv/src";
 import { parseArgs } from "citty";
 import minimist from "minimist";
 import mri from "mri";
 import yargs from "yargs-parser";
+import { parseArgv } from "../packages/argv/src";
 
 const argv = ["-b", "--bool", "--no-meep", "--multi=baz", "--foo", "bar"];
 

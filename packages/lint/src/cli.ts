@@ -1,6 +1,6 @@
+import { CLI } from "@funish/cli";
 import { commitMsgLint } from "./commit-msg";
 import { stagedLint } from "./staged";
-import { CLI } from "@funish/cli";
 
 export const cli = new CLI("lint");
 

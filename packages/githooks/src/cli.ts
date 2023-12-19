@@ -1,3 +1,4 @@
+import { CLI } from "@funish/cli";
 import { GithooksArray, GithooksName } from "./config";
 import {
   githooksInstall,
@@ -5,7 +6,6 @@ import {
   githooksSetup,
   githooksUninstall,
 } from "./githooks";
-import { CLI } from "@funish/cli";
 
 export const cli = new CLI("githooks");
 
