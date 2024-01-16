@@ -35,7 +35,7 @@
     "@funish/githooks": "workspace:*",
     "@funish/githooks-config": "workspace:*",
     "@funish/lint": "workspace:*",
-    "@types/node": "20.10.6",
+    "@types/node": "20.11.4",
     "prettier": "3.1.1",
     "unbuild": "2.0.0"
   }
