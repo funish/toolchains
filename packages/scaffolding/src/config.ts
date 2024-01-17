@@ -1,10 +1,13 @@
-import { Prompt } from "@funish/prompt";
 import { loadConfig } from "c12";
+import { consola } from "consola";
+import { PromptOptions, inferPromptReturnType } from "./types";
 
-export interface ScaffoldingConfig {
-  prompts?: Prompt[];
+export type ScaffoldingConfig = {
+  prompts?: {
+    [key: string]: inferPromptReturnType<PromptOptions>;
+  }[];
   extends?: string | [string];
-}
+};
 
 export function defineScaffoldingConfig(config: ScaffoldingConfig) {
   return config;

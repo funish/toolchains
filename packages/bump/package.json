@@ -39,7 +39,7 @@
   "homepage": "https://github.com/funish/toolchains#readme",
   "dependencies": {
     "@funish/cli": "workspace:*",
-    "@funish/prompt": "workspace:*",
+    "consola": "3.2.3",
     "nypm": "0.3.4",
     "pkg-types": "1.0.3",
     "semver": "7.5.4"

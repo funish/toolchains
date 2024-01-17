@@ -1,5 +1,5 @@
 import { execSync } from "child_process";
-import { createPrompt } from "@funish/prompt";
+import { consola } from "consola";
 import { detectPackageManager } from "nypm";
 import { readPackageJSON, resolvePackageJSON } from "pkg-types";
 import { prerelease } from "semver";
@@ -31,21 +31,19 @@ export async function bumpPublish(
   const pre = prerelease(version as string);
 
   if (!pre) {
-    createPrompt([
+    const answer = await consola.prompt(
+      `Are you sure you want to publish ${name}@${version} to latest?`,
       {
-        name: "publish",
-        message: `Are you sure you want to publish ${version} to latest?`,
-        default: "y",
-        validate: (answer) => {
-          if (answer === "y" || answer === "yes") {
-            npm(["publish", "--access", "public"]);
-            npm(["dist-tag", "add", `${name}@${version}`, "edge"]);
-            return true;
-          }
-          return false;
-        },
+        type: "confirm",
       },
-    ]);
+    );
+
+    if (answer) {
+      npm(["publish", "--access", "public"]);
+      npm(["dist-tag", "add", `${name}@${version}`, "edge"]);
+    } else {
+      consola.error(`Publish has been cancelled.(${name}@${version})`);
+    }
   } else {
     npm([
       "publish",
