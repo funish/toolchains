@@ -1,11 +1,8 @@
 import { loadConfig } from "c12";
-import { consola } from "consola";
-import { PromptOptions, inferPromptReturnType } from "./types";
+import { PromptOptions } from "./types";
 
 export type ScaffoldingConfig = {
-  prompts?: {
-    [key: string]: inferPromptReturnType<PromptOptions>;
-  }[];
+  prompts?: Record<string, PromptOptions>;
   extends?: string | [string];
 };
 
