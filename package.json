@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/funish/toolchains#readme",
   "devDependencies": {
-    "@biomejs/biome": "1.5.1",
+    "@biomejs/biome": "1.5.3",
     "@funish/githooks": "workspace:*",
     "@funish/githooks-config": "workspace:*",
     "@funish/lint": "workspace:*",
