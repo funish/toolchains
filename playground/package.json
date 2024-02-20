@@ -3,7 +3,7 @@
   "dependencies": {
     "@funish/argv": "workspace:*",
     "@funish/bench": "workspace:*",
-    "citty": "0.1.5",
+    "citty": "0.1.6",
     "minimist": "1.2.8",
     "mri": "1.2.0",
     "yargs-parser": "21.1.1"

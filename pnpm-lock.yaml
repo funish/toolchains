@@ -147,8 +147,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/bench
       citty:
-        specifier: 0.1.5
-        version: 0.1.5
+        specifier: 0.1.6
+        version: 0.1.6
       minimist:
         specifier: 1.2.8
         version: 1.2.8
@@ -1022,6 +1022,12 @@ packages:
     resolution: {integrity: sha512-AS7n5NSc0OQVMV9v6wt3ByujNIrne0/cTjiC2MYqhvao57VNfiuVksTSr2p17nVOhEr2KtqiAkGwHcgMC/qUuQ==}
     dependencies:
       consola: 3.2.3
+    dev: false
+
+  /citty@0.1.6:
+    resolution: {integrity: sha512-tskPPKEs8D2KPafUypv2gxwJP8h/OaJmC82QQGGDQcHvXX43xF2VDACcJVmZ0EuSxkpO9Kc4MlrA3q0+FG58AQ==}
+    dependencies:
+      consola: 3.2.3
 
   /color-convert@1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
@@ -1404,7 +1410,7 @@ packages:
     resolution: {integrity: sha512-4VG22mopWtIeHwogGSy1FViXVo0YT+m6BrqZfz0JJFwbSsePsCdOzdLIIli5BtMp7Xe8f/o2OmBpQX2NBOC24g==}
     hasBin: true
     dependencies:
-      citty: 0.1.5
+      citty: 0.1.6
       consola: 3.2.3
       defu: 6.1.4
       node-fetch-native: 1.6.2
@@ -1714,7 +1720,7 @@ packages:
         optional: true
     dependencies:
       autoprefixer: 10.4.17(postcss@8.4.35)
-      citty: 0.1.5
+      citty: 0.1.6
       cssnano: 6.0.3(postcss@8.4.35)
       defu: 6.1.4
       esbuild: 0.19.12
@@ -2387,7 +2393,7 @@ packages:
       '@rollup/plugin-replace': 5.0.5(rollup@3.29.4)
       '@rollup/pluginutils': 5.1.0(rollup@3.29.4)
       chalk: 5.3.0
-      citty: 0.1.5
+      citty: 0.1.6
       consola: 3.2.3
       defu: 6.1.4
       esbuild: 0.19.12
