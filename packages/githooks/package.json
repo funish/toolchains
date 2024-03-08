@@ -41,7 +41,7 @@
   "homepage": "https://github.com/funish/toolchains#readme",
   "dependencies": {
     "@funish/cli": "workspace:*",
-    "c12": "1.6.1",
+    "c12": "1.10.0",
     "cac": "6.7.14",
     "consola": "3.2.3",
     "defu": "6.1.4",
