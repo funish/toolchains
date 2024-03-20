@@ -4,11 +4,11 @@ import {
   readFileSync,
   readdirSync,
   writeFileSync,
-} from "fs";
-import { basename, resolve } from "path";
+} from "node:fs";
+import { basename, resolve } from "node:path";
 import { consola } from "consola";
 import { compile } from "handlebars";
-import { ScaffoldingContext } from "./types";
+import type { ScaffoldingContext } from "./types";
 
 export function compileHandlebarsFile(
   source: string,

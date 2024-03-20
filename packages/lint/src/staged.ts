@@ -1,5 +1,5 @@
-import { execSync } from "child_process";
-import { basename } from "path";
+import { execSync } from "node:child_process";
+import { basename } from "node:path";
 import micromatch from "micromatch";
 import { loadLintConfig } from "./config";
 import { git } from "./git";

@@ -3,7 +3,7 @@ import {
   resolvePackageJSON,
   writePackageJSON,
 } from "pkg-types";
-import { ReleaseType, SemVer, inc, prerelease } from "semver";
+import { type ReleaseType, type SemVer, inc, prerelease } from "semver";
 
 export async function bumpVersion(
   options: {

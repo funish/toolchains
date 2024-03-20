@@ -1,5 +1,5 @@
 import { loadConfig } from "c12";
-import { PromptOptions } from "./types";
+import type { PromptOptions } from "./types";
 
 export type ScaffoldingConfig = {
   prompts?: Record<string, PromptOptions>;

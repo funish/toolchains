@@ -1,4 +1,4 @@
-import { createInterface } from "readline";
+import { createInterface } from "node:readline";
 
 export interface Prompt {
   name: string;

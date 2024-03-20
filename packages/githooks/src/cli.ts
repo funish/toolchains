@@ -1,5 +1,5 @@
 import { CLI } from "@funish/cli";
-import { GithooksArray, GithooksName } from "./config";
+import { GithooksArray, type GithooksName } from "./config";
 import {
   githooksInstall,
   githooksMigrateFromHusky,

@@ -1,5 +1,5 @@
 import { parseArgc } from "./argc";
-import { Args } from "./types";
+import type { Args } from "./types";
 
 export function parserRegexp(argv: string[]) {
   const args: Args = { _: [] };

@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { readFileSync } from "node:fs";
 import { loadConfig } from "c12";
 import { parse } from "ini";
 

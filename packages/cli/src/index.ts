@@ -1,4 +1,4 @@
-import { basename, dirname } from "path";
+import { basename, dirname } from "node:path";
 import { parseArgv } from "@funish/argv";
 import { readPackageJSON, resolvePackageJSON } from "pkg-types";
 

@@ -1,9 +1,9 @@
-import { rmSync } from "fs";
+import { rmSync } from "node:fs";
 import { consola } from "consola";
-import { DownloadTemplateOptions, downloadTemplate } from "giget";
+import { type DownloadTemplateOptions, downloadTemplate } from "giget";
 import { compileScaffolding } from "./compile";
 import { loadScaffoldingConfig } from "./config";
-import { ScaffoldingContext, ScaffoldingContextType } from "./types";
+import type { ScaffoldingContext, ScaffoldingContextType } from "./types";
 
 export async function createScaffolding(
   source: string,

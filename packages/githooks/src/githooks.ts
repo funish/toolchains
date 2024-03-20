@@ -1,4 +1,4 @@
-import { SpawnSyncReturns, spawnSync } from "child_process";
+import { type SpawnSyncReturns, spawnSync } from "node:child_process";
 import {
   existsSync,
   mkdirSync,
@@ -6,11 +6,11 @@ import {
   renameSync,
   rmSync,
   writeFileSync,
-} from "fs";
+} from "node:fs";
 import consola from "consola";
 import { defu } from "defu";
 import { encode } from "ini";
-import { GithooksName, loadGitConfig, loadGithooksConfig } from "./config";
+import { type GithooksName, loadGitConfig, loadGithooksConfig } from "./config";
 import { saveScript } from "./script";
 
 const git = (args: string[]): SpawnSyncReturns<Buffer> =>

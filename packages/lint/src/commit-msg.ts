@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "fs";
+import { existsSync, readFileSync } from "node:fs";
 import consola from "consola";
 import { loadLintConfig } from "./config";
 import { git } from "./git";

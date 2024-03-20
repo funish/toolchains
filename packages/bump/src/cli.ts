@@ -1,5 +1,5 @@
 import { CLI } from "@funish/cli";
-import { ReleaseType } from "semver";
+import type { ReleaseType } from "semver";
 import { bumpPublish, bumpVersion } from ".";
 
 export const cli = new CLI("bump");

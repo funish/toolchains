@@ -1,6 +1,6 @@
 import { loadConfig } from "c12";
-import { commitMsgLintConfig } from "./commit-msg";
-import { stagedLintConfig } from "./staged";
+import type { commitMsgLintConfig } from "./commit-msg";
+import type { stagedLintConfig } from "./staged";
 
 export interface LintConfig {
   staged?: stagedLintConfig;

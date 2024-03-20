@@ -1,6 +1,6 @@
-import { resolve } from "path";
+import { resolve } from "node:path";
+import { cwd } from "node:process";
 import { readPackageJSON, writePackageJSON } from "pkg-types";
-import { cwd } from "process";
 
 export async function saveScript(name: string, script: string, path?: string) {
   const pkg = await readPackageJSON(path ? path : cwd());
