@@ -30,25 +30,27 @@ export async function bumpPublish(
 
   const pre = prerelease(version as string);
 
-  if (!pre) {
-    const answer = await consola.prompt(
-      `Are you sure you want to publish ${name}@${version} to latest?`,
-      {
-        type: "confirm",
-      },
-    );
+  if (name && version) {
+    if (!pre) {
+      const answer = await consola.prompt(
+        `Are you sure you want to publish ${name}@${version} to latest?`,
+        {
+          type: "confirm",
+        },
+      );
 
-    if (answer) {
-      npm(["publish", "--access", "public"]);
-      npm(["dist-tag", "add", `${name}@${version}`, "edge"]);
+      if (answer) {
+        npm(["publish", "--access", "public"]);
+        npm(["dist-tag", "add", `${name}@${version}`, "edge"]);
+      } else {
+        consola.error(`Publish has been cancelled.(${name}@${version})`);
+      }
     } else {
-      consola.error(`Publish has been cancelled.(${name}@${version})`);
+      npm([
+        "publish",
+        "--tag",
+        options.tag || (typeof pre[0] === "string" ? pre[0] : "edge"),
+      ]);
     }
-  } else {
-    npm([
-      "publish",
-      "--tag",
-      options.tag || (typeof pre[0] === "string" ? pre[0] : "edge"),
-    ]);
   }
 }

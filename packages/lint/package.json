@@ -1,6 +1,6 @@
 {
   "name": "@funish/lint",
-  "version": "0.0.2-edge.2",
+  "version": "0.0.2-edge.3",
   "description": "Integrated one-click Linter, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
