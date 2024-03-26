@@ -41,7 +41,7 @@
     "@funish/cli": "workspace:*",
     "c12": "1.10.0",
     "consola": "3.2.3",
-    "giget": "1.2.1",
+    "giget": "1.2.3",
     "handlebars": "4.7.8"
   }
 }
