@@ -12,7 +12,7 @@ export function defineLintConfig(config: LintConfig) {
   return config;
 }
 
-const ConfigDefaults = defineLintConfig({
+export const ConfigDefaults = {
   commitMsg: {
     type: {
       enum: [
@@ -39,7 +39,7 @@ const ConfigDefaults = defineLintConfig({
       rules: ["phrasecase"],
     },
   },
-});
+};
 
 export async function loadLintConfig(
   cwd?: string,

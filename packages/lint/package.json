@@ -1,6 +1,6 @@
 {
   "name": "@funish/lint",
-  "version": "0.0.2-edge.5",
+  "version": "0.0.2-edge.6",
   "description": "Integrated one-click Linter, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -46,6 +46,7 @@
     "@funish/cli": "workspace:*",
     "c12": "1.10.0",
     "consola": "3.2.3",
+    "magic-regexp": "0.8.0",
     "micromatch": "4.0.5"
   },
   "devDependencies": {
