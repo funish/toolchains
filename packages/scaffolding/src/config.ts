@@ -1,10 +1,5 @@
-import type { Prompts } from "@funish/prompt";
 import { loadConfig } from "c12";
-
-export type ScaffoldingConfig = {
-  prompts?: Prompts;
-  extends?: string | [string];
-};
+import type { ScaffoldingConfig } from "./types";
 
 export function defineScaffoldingConfig(config: ScaffoldingConfig) {
   return config;
