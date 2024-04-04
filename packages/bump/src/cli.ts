@@ -55,9 +55,9 @@ const main = defineCommand({
       },
       async run({ args }) {
         await bumpVersion({
-          path: (args.path as string) || process.cwd(),
-          release: (args.release as ReleaseType) || "prerelease",
-          tag: args.tag as string,
+          path: args.path || process.cwd(),
+          release: args.release || "prerelease",
+          tag: args.tag,
         });
       },
     },
