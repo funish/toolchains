@@ -1,6 +1,6 @@
 {
   "name": "@funish/cli",
-  "version": "0.0.4-edge.3",
+  "version": "0.0.5",
   "description": "Programmatically create command lines, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
