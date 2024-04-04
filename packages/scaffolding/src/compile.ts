@@ -6,8 +6,10 @@ import {
   writeFileSync,
 } from "node:fs";
 import { basename, resolve } from "node:path";
-import { compile } from "handlebars";
+import Handlebars from "handlebars";
 import type { ScaffoldingContext } from "./types";
+
+const compile = Handlebars.compile;
 
 export function compileHandlebarsFile(
   source: string,
