@@ -1,63 +1,67 @@
-import { CLI } from "@funish/cli";
+import { defineCommand, runMain } from "@funish/cli";
 import type { ReleaseType } from "semver";
 import { bumpPublish, bumpVersion } from ".";
 
-export const cli = new CLI("bump");
-
-cli.command({
-  name: "publish",
-  alias: "p",
-  description: "Publish a package to npm",
-  options: [
-    {
-      name: "path",
-      description: "Path to package.json",
-      alias: "p",
+const main = defineCommand({
+  meta: {
+    name: "bump",
+  },
+  subCommands: {
+    publish: {
+      meta: {
+        name: "publish",
+        description: "Publish a package to npm",
+      },
+      args: {
+        path: {
+          type: "string",
+          description: "Path to package.json",
+          alias: "p",
+        },
+        tag: {
+          type: "string",
+          description: "Tag to publish to",
+          alias: "t",
+        },
+      },
+      async run({ args }) {
+        await bumpPublish({
+          path: (args.path as string) || process.cwd(),
+          tag: args.tag as string,
+        });
+      },
     },
-    {
-      name: "tag",
-      description: "Tag to publish to",
-      alias: "t",
+    version: {
+      meta: {
+        name: "version",
+        description: "Bump the version of a package",
+      },
+      args: {
+        path: {
+          type: "string",
+          description: "Path to package.json",
+          alias: "p",
+        },
+        release: {
+          type: "string",
+          description: "Release type",
+          alias: "r",
+        },
+        tag: {
+          type: "string",
+          description: "Tag to publish to",
+          alias: "t",
+        },
+      },
+      async run({ args }) {
+        await bumpVersion({
+          path: (args.path as string) || process.cwd(),
+          release: (args.release as ReleaseType) || "prerelease",
+          tag: args.tag as string,
+        });
+      },
     },
-  ],
-  action: async (argv) => {
-    await bumpPublish({
-      path: (argv.path as string) || process.cwd(),
-      tag: argv.tag as string,
-    });
   },
 });
 
-cli.command({
-  name: "version",
-  alias: "v",
-  description: "Bump the version of a package",
-  options: [
-    {
-      name: "path",
-      description: "Path to package.json",
-      alias: "p",
-    },
-    {
-      name: "release",
-      description: "Release type",
-      alias: "r",
-    },
-    {
-      name: "tag",
-      description: "Tag to publish to",
-      alias: "t",
-    },
-  ],
-  action: async (argv) => {
-    await bumpVersion({
-      path: (argv.path as string) || process.cwd(),
-      release: (argv.release as ReleaseType) || "prerelease",
-      tag: argv.tag as string,
-    });
-  },
-});
-
-cli.version();
-
-cli.help();
+runMain(main);

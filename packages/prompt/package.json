@@ -1,6 +1,6 @@
 {
   "name": "@funish/prompt",
-  "version": "0.0.4-edge.1",
+  "version": "0.0.4-edge.2",
   "description": "Programmatically create interactive prompts, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -32,5 +32,8 @@
   "bugs": {
     "url": "https://github.com/funish/toolchains/issues"
   },
-  "homepage": "https://github.com/funish/toolchains#readme"
+  "homepage": "https://github.com/funish/toolchains#readme",
+  "dependencies": {
+    "consola": "3.2.3"
+  }
 }

@@ -8,9 +8,9 @@
     "dev": "pnpm -r prepack --stub",
     "check": "biome check . --apply-unsafe && biome format . --write",
     "format": "prettier --write --list-different . --ignore-path .gitignore",
-    "edge": "pnpm -r exec bump v",
-    "release": "pnpm -r exec bump v -r patch",
-    "public": "pnpm -r exec bump p",
+    "edge": "pnpm -r exec bump version",
+    "release": "pnpm -r exec bump version -r patch",
+    "public": "pnpm -r exec bump publish",
     "postinstall": "pnpm dev && githooks install"
   },
   "repository": {

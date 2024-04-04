@@ -1,84 +1,31 @@
-import { createInterface } from "node:readline";
+import { consola } from "consola";
+import type { PromptOptions, Prompts, inferPromptReturnType } from "./types";
 
-export interface Prompt {
-  name: string;
-  message: string;
-  default?: string | boolean;
-  validate: (answer: string) => boolean;
+export async function usePrompt<T extends PromptOptions>(
+  message: string,
+  opts?: T,
+): Promise<inferPromptReturnType<T>> {
+  return consola.prompt(message, opts);
 }
 
-export interface NestedObject {
-  [key: string]: string | boolean | NestedObject;
-}
+export async function createPrompt<T extends Prompts>(
+  prompts: T,
+): Promise<{
+  [key in keyof T]?: inferPromptReturnType<(typeof prompts)[key]>;
+}> {
+  const answers: {
+    [key in keyof T]?: inferPromptReturnType<(typeof prompts)[key]>;
+  } = {};
 
-export function createPrompt(prompts: Prompt[]) {
-  const rl = createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
+  for (const prompt in prompts) {
+    const promptOption = prompts[prompt];
+    const message = prompt;
+    const answer = await usePrompt(message, promptOption);
 
-  const answers: NestedObject = {};
-
-  return new Promise((resolve) => {
-    const promptNext = (index: number) => {
-      const currentPrompt = prompts[index];
-
-      if (!currentPrompt) {
-        rl.close();
-        resolve(mergeAnswers(answers));
-        return;
-      }
-
-      rl.question(
-        `${currentPrompt.message} ${
-          currentPrompt.default ? `(${currentPrompt.default})` : ""
-        }: `,
-        (answer) => {
-          const validatedAnswer =
-            answer.length === 0 && currentPrompt.default
-              ? currentPrompt.default
-              : currentPrompt.validate(answer)
-                ? answer
-                : null;
-
-          if (validatedAnswer === null) {
-            console.log("Invalid answer");
-            promptNext(index);
-            return;
-          }
-          answers[currentPrompt.name] = validatedAnswer;
-          promptNext(index + 1);
-        },
-      );
-    };
-
-    promptNext(0);
-  });
-}
-
-export function mergeAnswers(object: NestedObject) {
-  const result = {};
-
-  for (const key in object) {
-    const value = object[key];
-    const keys = key.split(".");
-    let current: NestedObject = result;
-
-    for (let i = 0; i < keys.length; i++) {
-      const key = keys[i];
-      const isLast = i === keys.length - 1;
-
-      if (isLast) {
-        current[key] = value;
-      } else {
-        if (!current[key]) {
-          current[key] = {};
-        }
-
-        current = current[key] as NestedObject;
-      }
-    }
+    answers[prompt] = answer;
   }
 
-  return result;
+  return answers;
 }
+
+export * from "./types";

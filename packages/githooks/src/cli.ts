@@ -1,4 +1,4 @@
-import { CLI } from "@funish/cli";
+import { defineCommand, runMain } from "@funish/cli";
 import { GithooksArray, type GithooksName } from "./config";
 import {
   githooksInstall,
@@ -7,72 +7,75 @@ import {
   githooksUninstall,
 } from "./githooks";
 
-export const cli = new CLI("githooks");
-
-cli.command({
-  name: "install",
-  alias: "i",
-  description: "Install Git hooks.",
-  options: [
-    {
-      name: "path",
-      description: "Path to store Git hooks.",
-      alias: "p",
+const main = defineCommand({
+  meta: {
+    name: "githooks",
+  },
+  subCommands: {
+    install: {
+      meta: {
+        name: "install",
+        description: "Install Git hooks.",
+      },
+      args: {
+        path: {
+          type: "string",
+          description: "Path to store Git hooks.",
+          alias: "p",
+        },
+        script: {
+          type: "boolean",
+          description:
+            "Git hooks will be called during the post-install phase of the lifecycle.",
+          alias: "s",
+        },
+      },
+      async run({ args }) {
+        await githooksInstall(args.path, args.saveScript);
+      },
     },
-    {
-      name: "script",
-      description:
-        "Git hooks will be called during the post-install phase of the lifecycle.",
-      alias: "s",
+    setup: {
+      meta: {
+        name: "setup",
+        description: "Set up Git hooks.",
+      },
+      args: {
+        hooks: {
+          type: "string",
+          description: "Git hooks to set up.",
+        },
+        script: {
+          type: "boolean",
+          description:
+            "Git hooks will be called during the post-install phase of the lifecycle.",
+          alias: "s",
+        },
+      },
+      async run({ args }) {
+        if (args.hooks && GithooksArray.includes(args.hooks as GithooksName)) {
+          await githooksSetup(args.hooks, args.script);
+        }
+      },
     },
-  ],
-  action: async (argv) => {
-    await githooksInstall(argv.path as string, argv.saveScript as boolean);
+    uninstall: {
+      meta: {
+        name: "uninstall",
+        description: "Uninstall Git hooks.",
+      },
+      async run() {
+        await githooksUninstall();
+      },
+    },
+    migrate: {
+      meta: {
+        name: "migrate",
+        description: "Migrating from husky to @funish/githooks.",
+      },
+      async run() {
+        await githooksMigrateFromHusky();
+      },
+    },
   },
 });
 
-cli.command({
-  name: "setup",
-  description: "Set up Git hooks.",
-  options: [
-    {
-      name: "hooks",
-      description: "Git hooks to set up.",
-    },
-    {
-      name: "script",
-      description:
-        "Git hooks will be called during the post-install phase of the lifecycle.",
-      alias: "s",
-    },
-  ],
-  action: async (argv) => {
-    if (argv.hooks && GithooksArray.includes(argv.hooks as GithooksName)) {
-      await githooksSetup(
-        argv.hooks as GithooksName,
-        argv.script ? (argv.script as string) : null,
-      );
-    }
-  },
-});
-
-cli.command({
-  name: "uninstall",
-  alias: "un",
-  description: "Uninstall Git hooks.",
-  action: () => {
-    githooksUninstall();
-  },
-});
-
-cli.command({
-  name: "migrate",
-  description: "Migrating from husky to @funish/githooks.",
-  action: async () => {
-    await githooksMigrateFromHusky();
-  },
-});
-
-cli.version();
-
-cli.help();
+runMain(main);

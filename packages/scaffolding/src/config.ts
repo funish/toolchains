@@ -1,8 +1,8 @@
+import type { Prompts } from "@funish/prompt";
 import { loadConfig } from "c12";
-import type { PromptOptions } from "./types";
 
 export type ScaffoldingConfig = {
-  prompts?: Record<string, PromptOptions>;
+  prompts?: Prompts;
   extends?: string | [string];
 };
 

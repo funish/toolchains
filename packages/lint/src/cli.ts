@@ -1,25 +1,31 @@
-import { CLI } from "@funish/cli";
+import { defineCommand, runMain } from "@funish/cli";
 import { commitMsgLint } from "./commit-msg";
 import { stagedLint } from "./staged";
 
-export const cli = new CLI("lint");
-
-cli.command({
-  name: "commit-msg",
-  description: "Lint commit message",
-  action: async () => {
-    await commitMsgLint();
+const main = defineCommand({
+  meta: {
+    name: "lint",
+  },
+  subCommands: {
+    "commit-msg": {
+      meta: {
+        name: "commit-msg",
+        description: "Lint commit message",
+      },
+      async run({ args }) {
+        await commitMsgLint(args.path);
+      },
+    },
+    staged: {
+      meta: {
+        name: "staged",
+        description: "Lint staged files",
+      },
+      async run({ args }) {
+        await stagedLint(args.path);
+      },
+    },
   },
 });
 
-cli.command({
-  name: "staged",
-  description: "Lint staged files",
-  action: async () => {
-    await stagedLint();
-  },
-});
-
-cli.version();
-
-cli.help();
+runMain(main);

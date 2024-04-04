@@ -34,6 +34,35 @@ export default defineLintConfig({
 });
 ```
 
+Use [@funish/githooks](/packages/githooks/README.md) to integrate it with Git hooks.
+
+```ts
+// githooks.config.ts
+import { defineGithooksConfig } from "@funish/githooks";
+
+export default defineGithooksConfig({
+  hooks: {
+    "pre-commit": "pnpm lint staged",
+    "commit-msg": "pnpm lint commit-msg",
+  },
+});
+```
+
+### CLI
+
+```bash
+$ lint -h
+
+USAGE lint commit-msg|staged
+
+COMMANDS
+
+  commit-msg    Lint commit message
+      staged    Lint staged files
+
+Use lint <command> --help for more information about a command.
+```
+
 ## Interfaces
 
 See it on [JSDoc](https://www.jsdocs.io/package/@funish/lint).

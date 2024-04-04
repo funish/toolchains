@@ -102,7 +102,7 @@ export async function githooksSetup(
   }
 }
 
-export function githooksUninstall() {
+export async function githooksUninstall() {
   // Reset the git hooks directory to its default value.
   git(["config", "--unset", "core.hooksPath"]);
   // Remove the git hooks directory by nodejs api

@@ -1,6 +1,6 @@
 {
   "name": "@funish/cli",
-  "version": "0.0.4-edge.1",
+  "version": "0.0.4-edge.2",
   "description": "Programmatically create command lines, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -34,7 +34,9 @@
   },
   "homepage": "https://github.com/funish/toolchains#readme",
   "dependencies": {
-    "@funish/argv": "workspace:*",
+    "citty": "0.1.6",
+    "defu": "6.1.4",
+    "pathe": "1.1.2",
     "pkg-types": "1.0.3"
   }
 }

@@ -4,29 +4,32 @@ import { detectPackageManager } from "nypm";
 import { readPackageJSON, resolvePackageJSON } from "pkg-types";
 import { prerelease } from "semver";
 
+export async function useNPM(path: string | undefined, args: string[]) {
+  const pkgPath = path || process.cwd();
+
+  const detectedPackageManager = await detectPackageManager(pkgPath, {
+    includeParentDirs: true,
+  });
+  if (!detectedPackageManager) {
+    throw new Error("Could not detect a package manager.");
+  }
+  execSync(`${detectedPackageManager.name} ${args.join(" ")}`, {
+    stdio: "inherit",
+  });
+}
+
 export async function bumpPublish(
   options: { path?: string; tag?: string } = {
     path: process.cwd(),
   },
 ) {
-  const npm = async (args: string[]) => {
-    const detectedPackageManager = await detectPackageManager(
-      options.path || process.cwd(),
-      {
-        includeParentDirs: true,
-      },
-    );
-    if (!detectedPackageManager) {
-      throw new Error("Could not detect a package manager.");
-    }
-    execSync(`${detectedPackageManager.name} ${args.join(" ")}`, {
-      stdio: "inherit",
-    });
-  };
-
   const { name, version } = await readPackageJSON(
     await resolvePackageJSON(options.path),
   );
+
+  const npm = async (args: string[]) => {
+    await useNPM(options.path, args);
+  };
 
   const pre = prerelease(version as string);
 

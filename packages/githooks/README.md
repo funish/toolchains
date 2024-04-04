@@ -79,24 +79,16 @@ $ pnpm githooks migrate
 ```bash
 $ githooks -h
 
-Usage:
-  $ githooks <command> [options]
+USAGE githooks install|setup|uninstall|migrate
 
-Commands:
-  install [path]          Install Git hooks.
-  setup <hooks> [script]  Set up Git hooks.
-  uninstall               Uninstall Git hooks.
-  migrate                 Migrating from husky to @funish/githooks.
+COMMANDS
 
-For more info, run any command with the `--help` flag:
-  $ githooks install --help
-  $ githooks setup --help
-  $ githooks uninstall --help
-  $ githooks migrate --help
+    install    Install Git hooks.
+      setup    Set up Git hooks.
+  uninstall    Uninstall Git hooks.
+    migrate    Migrating from husky to @funish/githooks.
 
-Options:
-  -h, --help     Display this message
-  -v, --version  Display version number
+Use githooks <command> --help for more information about a command.
 ```
 
 ## Interfaces

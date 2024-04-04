@@ -1,9 +1,9 @@
 import { rmSync } from "node:fs";
-import { consola } from "consola";
+import { createPrompt } from "@funish/prompt";
 import { type DownloadTemplateOptions, downloadTemplate } from "giget";
 import { compileScaffolding } from "./compile";
 import { loadScaffoldingConfig } from "./config";
-import type { ScaffoldingContext, ScaffoldingContextType } from "./types";
+import type { ScaffoldingContext } from "./types";
 
 export async function createScaffolding(
   source: string,
@@ -13,23 +13,12 @@ export async function createScaffolding(
 ) {
   const { dir } = await downloadTemplate(source, options);
 
-  const scaffoldingContext = context || {};
+  let scaffoldingContext = context || {};
 
   const prompts = (await loadScaffoldingConfig(dir)).prompts;
 
   if (prompts) {
-    for (const prompt in prompts) {
-      const promptOption = prompts[prompt];
-
-      const message = promptOption.message || prompt;
-
-      const answer = (await consola.prompt(
-        message,
-        promptOption,
-      )) as ScaffoldingContextType;
-
-      scaffoldingContext[prompt] = answer;
-    }
+    scaffoldingContext = await createPrompt(prompts);
   }
 
   compileScaffolding(dir, target, scaffoldingContext);

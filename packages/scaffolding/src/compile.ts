@@ -6,7 +6,6 @@ import {
   writeFileSync,
 } from "node:fs";
 import { basename, resolve } from "node:path";
-import { consola } from "consola";
 import { compile } from "handlebars";
 import type { ScaffoldingContext } from "./types";
 

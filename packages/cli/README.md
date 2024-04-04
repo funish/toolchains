@@ -5,7 +5,7 @@
 ![npm license](https://img.shields.io/npm/l/@funish/cli)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)
 
-> Programmatically create command lines, powered by [Funish](https://funish.net/).
+> Programmatically create command lines based on [Consola](https://github.com/unjs/consola), powered by [Funish](https://funish.net/).
 
 ## Getting started
 
@@ -22,34 +22,7 @@ $ pnpm add @funish/cli
 
 ## Usage
 
-```ts
-import { CLI } from "@funish/cli";
-
-const cli = new CLI("my-cli");
-
-cli.command({
-  name: "foo",
-  description: "foo command",
-  options: [
-    {
-      name: "bar",
-      description: "bar option",
-      type: "string",
-    },
-  ],
-  action: (argv) => {
-    console.log(argv);
-  },
-});
-
-cli.version();
-
-cli.help();
-```
-
-## Interfaces
-
-See it on [JSDoc](https://www.jsdocs.io/package/@funish/cli).
+You can see more information on [Citty's documentation](https://github.com/unjs/citty).
 
 ## License
 

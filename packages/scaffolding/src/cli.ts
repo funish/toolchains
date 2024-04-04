@@ -1,31 +1,28 @@
-import { CLI } from "@funish/cli";
+import { defineCommand, runMain } from "@funish/cli";
 import { createScaffolding } from "./scaffolding";
 
-const cli = new CLI("scaffolding");
-
-// Register commands
-cli.command({
-  options: [
-    {
-      name: "source",
+const main = defineCommand({
+  meta: {
+    name: "scaffolding",
+  },
+  args: {
+    source: {
+      type: "string",
+      description: "Source template",
       alias: "s",
-      description: "Source directory",
     },
-    {
-      name: "target",
-      alias: "t",
+    target: {
+      type: "string",
       description: "Target directory",
+      alias: "t",
     },
-  ],
-  action: async (argv) => {
-    if (argv.source && argv.target) {
-      createScaffolding(argv.source as string, argv.target as string);
-    } else {
-      cli.help();
+  },
+  async run({ args }) {
+    if (!args.source || !args.target) {
+      throw new Error("Missing source or target");
     }
+    await createScaffolding(args.source, args.target);
   },
 });
 
-cli.version();
-
-cli.help();
+runMain(main);
