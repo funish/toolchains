@@ -1,3 +1,4 @@
+import { exec } from "node:child_process";
 import { defineBuildConfig } from "unbuild";
 
 export default defineBuildConfig({
@@ -7,6 +8,13 @@ export default defineBuildConfig({
     emitCJS: true,
     esbuild: {
       minify: true,
+    },
+  },
+  hooks: {
+    "rollup:done": () => {
+      exec(
+        "ts-json-schema-generator --path dist/index.d.ts --type ScaffoldingConfig -o dist/schema.json -e all",
+      );
     },
   },
 });

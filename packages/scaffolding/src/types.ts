@@ -11,6 +11,7 @@ export type ScaffoldingContext = {
 };
 
 export type ScaffoldingConfig = {
+  $schema?: string;
   prompts?: Prompts;
   extends?: string | [string];
 };
