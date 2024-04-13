@@ -27,8 +27,8 @@ importers:
         specifier: 3.2.5
         version: 3.2.5
       ts-json-schema-generator:
-        specifier: 1.5.1
-        version: 1.5.1
+        specifier: 2.0.1
+        version: 2.0.1
       unbuild:
         specifier: 2.0.0
         version: 2.0.0(typescript@5.4.4)
@@ -2375,8 +2375,8 @@ packages:
     dependencies:
       is-number: 7.0.0
 
-  /ts-json-schema-generator@1.5.1:
-    resolution: {integrity: sha512-apX5qG2+NA66j7b4AJm8q/DpdTeOsjfh7A3LpKsUiil0FepkNwtN28zYgjrsiiya2/OPhsr/PSjX5FUYg79rCg==}
+  /ts-json-schema-generator@2.0.1:
+    resolution: {integrity: sha512-0sWa9uXFzkcZS/0LV4BLB91elC+2brg6JyIYXZEUCs6P7Z/BXuhUutxO4ssg7Kb9Xe4dzQXsc5IAmOHt7IETmA==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     dependencies:
@@ -2386,7 +2386,7 @@ packages:
       json5: 2.2.3
       normalize-path: 3.0.0
       safe-stable-stringify: 2.4.3
-      typescript: 5.4.4
+      typescript: 5.4.5
     dev: true
 
   /type-level-regexp@0.1.17:
@@ -2395,6 +2395,12 @@ packages:
 
   /typescript@5.4.4:
     resolution: {integrity: sha512-dGE2Vv8cpVvw28v8HCPqyb08EzbBURxDpuhJvTrusShUfGnhHBafDsLdS1EhhxyL6BJQE+2cT3dDPAv+MQ6oLw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true
+
+  /typescript@5.4.5:
+    resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
