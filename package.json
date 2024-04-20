@@ -37,7 +37,7 @@
     "@funish/lint": "workspace:*",
     "@types/node": "20.12.7",
     "prettier": "3.2.5",
-    "ts-json-schema-generator": "2.0.1",
+    "ts-json-schema-generator": "2.1.0",
     "unbuild": "2.0.0"
   }
 }
