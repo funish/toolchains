@@ -1,7 +1,7 @@
 {
   "name": "@funish/toolchains",
   "version": "0.0.0",
-  "description": "Programmatically create unified, standardised tool chains, powered by funish.",
+  "description": "A comprehensive collection of development toolchains for modern JavaScript/TypeScript projects, providing CLI tools, linting, scaffolding, Git hooks, and more.",
   "private": true,
   "scripts": {
     "build": "pnpm -r prepack",
@@ -10,7 +10,7 @@
     "format": "prettier --write --list-different . --ignore-path .gitignore",
     "edge": "pnpm -r exec bump version",
     "release": "pnpm -r exec bump version -r patch",
-    "public": "pnpm -r --no-bail exec bump publish",
+    "public": "pnpm -r --no-bail --no-private exec bump publish",
     "postinstall": "pnpm dev && githooks install"
   },
   "repository": {
@@ -18,7 +18,17 @@
     "url": "git+https://github.com/funish/toolchains.git"
   },
   "keywords": [
-    "toolchains"
+    "toolchains",
+    "development-tools",
+    "cli",
+    "linting",
+    "scaffolding",
+    "git-hooks",
+    "typescript",
+    "javascript",
+    "build-tools",
+    "developer-experience",
+    "monorepo"
   ],
   "author": {
     "name": "Funish",
@@ -31,13 +41,14 @@
   },
   "homepage": "https://github.com/funish/toolchains#readme",
   "devDependencies": {
-    "@biomejs/biome": "1.7.2",
+    "@biomejs/biome": "1.9.4",
     "@funish/githooks": "workspace:*",
     "@funish/githooks-config": "workspace:*",
     "@funish/lint": "workspace:*",
-    "@types/node": "20.12.8",
-    "prettier": "3.2.5",
-    "ts-json-schema-generator": "2.1.1",
-    "unbuild": "2.0.0"
-  }
+    "@types/node": "22.13.1",
+    "prettier": "3.4.2",
+    "ts-json-schema-generator": "2.3.0",
+    "unbuild": "3.3.1"
+  },
+  "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c"
 }

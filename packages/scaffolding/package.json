@@ -1,7 +1,7 @@
 {
   "name": "@funish/scaffolding",
-  "version": "0.0.4",
-  "description": "Programmatically build scaffolding, powered by Funish.",
+  "version": "0.0.5-edge.1",
+  "description": "Powerful project scaffolding with template support, interactive prompts, and extensible design, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
@@ -25,7 +25,16 @@
   },
   "keywords": [
     "scaffolding",
-    "handlebars"
+    "handlebars",
+    "templates",
+    "boilerplate",
+    "project-generator",
+    "cli",
+    "typescript",
+    "javascript",
+    "interactive",
+    "template-engine",
+    "project-creation"
   ],
   "author": {
     "name": "Funish",
@@ -40,8 +49,8 @@
   "dependencies": {
     "@funish/cli": "workspace:*",
     "@funish/prompt": "workspace:*",
-    "c12": "1.10.0",
-    "giget": "1.2.3",
+    "c12": "2.0.1",
+    "giget": "1.2.4",
     "handlebars": "4.7.8"
   }
 }

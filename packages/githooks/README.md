@@ -5,100 +5,182 @@
 ![npm license](https://img.shields.io/npm/l/@funish/githooks)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)
 
-> Programmatically create git hooks, powered by [Funish](https://funish.net/).
+> Modern Git hooks management with configuration support, powered by [Funish](https://funish.net/).
 
-Inspired by [husky](https://github.com/typicode/husky) and with an extremely similar implementation, but modified and supplemented with some possible details.
+## Features
 
-## Getting started
+- 🚀 Simple and intuitive CLI
+- ⚙️ Configuration-driven setup
+- 📦 Automatic package manager detection
+- 🔄 Easy migration from husky
+- 🎯 Supports all Git hooks
+- 💪 TypeScript support
+- 🔒 Secure hook execution
+- 🌟 Zero dependencies
+
+## Installation
 
 ```bash
 # npm
-$ npm install -D @funish/githooks
+$ npm install @funish/githooks
 
 # yarn
-$ yarn add -D @funish/githooks
+$ yarn add @funish/githooks
 
 # pnpm
-$ pnpm add -D @funish/githooks
+$ pnpm add @funish/githooks
 ```
 
 ## Usage
 
-### Recommend
+### CLI
 
-For unified processes, we prefer to use configuration files to manage certain simple commands. This method is only suitable for fixed configuration management and `githooks install` should be re-run after making changes to the configuration file.
+#### Install Hooks
 
-```ts
-// githooks.config.ts
-import { defineGithooksConfig } from "@funish/githooks";
+```bash
+# Install in default location (.githooks)
+$ githooks install
 
-export default defineGithooksConfig({
-  hooks: {
-    "pre-commit": "pnpm lint staged",
-    "commit-msg": "pnpm lint commit-msg",
-  },
-});
+# Install in custom directory
+$ githooks install --path .hooks
+
+# Install and save postinstall script
+$ githooks install --script
+```
+
+#### Set Up Hooks
+
+```bash
+# Set up pre-commit hook
+$ githooks setup pre-commit
+
+# Set up with script
+$ githooks setup pre-commit --script "npm test"
+```
+
+#### Uninstall Hooks
+
+```bash
+$ githooks uninstall
+```
+
+#### Migrate from Husky
+
+```bash
+$ githooks migrate
 ```
 
 ### Configuration
 
-#### Type definition
+Create a `githooks.config.ts` file:
 
 ```ts
-export interface GithooksConfig {
-  path?: string;
+import { defineGithooksConfig } from "@funish/githooks";
+
+export default defineGithooksConfig({
+  // Custom hooks directory
+  path: ".hooks",
+
+  // Hook scripts
+  hooks: {
+    "pre-commit": "npm test",
+    "pre-push": "npm run build",
+  },
+
+  // Additional Git config
+  gitConfig: {
+    core: {
+      autocrlf: "input",
+    },
+  },
+});
+```
+
+### Programmatic Usage
+
+```ts
+import {
+  githooksInstall,
+  githooksSetup,
+  githooksUninstall,
+  githooksMigrateFromHusky,
+} from "@funish/githooks";
+
+// Install hooks
+await githooksInstall(".hooks", true);
+
+// Set up a hook
+await githooksSetup("pre-commit", "npm test");
+
+// Uninstall hooks
+await githooksUninstall();
+
+// Migrate from husky
+await githooksMigrateFromHusky();
+```
+
+## Supported Hooks
+
+All standard Git hooks are supported:
+
+- `applypatch-msg`
+- `pre-applypatch`
+- `post-applypatch`
+- `pre-commit`
+- `pre-merge-commit`
+- `prepare-commit-msg`
+- `commit-msg`
+- `post-commit`
+- `pre-rebase`
+- `post-checkout`
+- `post-merge`
+- `pre-push`
+- And [more](https://git-scm.com/docs/githooks)
+
+## API Reference
+
+### githooksInstall(path?, isSaveScript?)
+
+Installs Git hooks in the specified directory.
+
+- `path` (string): Directory to install hooks in
+- `isSaveScript` (boolean | string): Whether to save installation script
+
+### githooksSetup(hooks, script?)
+
+Sets up a specific Git hook.
+
+- `hooks` (GithooksName): Name of the hook to set up
+- `script` (string): Script content for the hook
+
+### githooksUninstall()
+
+Uninstalls all Git hooks and restores original configuration.
+
+### githooksMigrateFromHusky()
+
+Migrates hooks from Husky to @funish/githooks.
+
+### Configuration
+
+#### GithooksConfig
+
+```ts
+interface GithooksConfig {
+  path?: string; // Custom hooks directory
   hooks?: {
+    // Hook scripts
     [key in GithooksName]?: string;
   };
-  gitConfig?: object;
-  extends?: string | [string];
+  gitConfig?: object; // Additional Git config
+  extends?: string | [string]; // Base config to extend
 }
 ```
 
-### Husky Like
+## Contributing
 
-We can also use it in a similar way to Husky, except that the default folder will be `.githooks`.
-
-```bash
-# Install Git hooks during the post-installation phase of the lifecycle.
-# Or you can use `pnpm githooks install -S prepare`.
-$ pnpm githooks install -S
-
-# Set up Git hooks.
-$ pnpm githooks setup <hooks> [script]
-
-# Uninstall Git hooks.
-$ pnpm githooks uninstall
-
-# Migrating from husky to @funish/githooks.
-$ pnpm githooks migrate
-```
-
-### CLI
-
-```bash
-$ githooks -h
-
-USAGE githooks install|setup|uninstall|migrate
-
-COMMANDS
-
-    install    Install Git hooks.
-      setup    Set up Git hooks.
-  uninstall    Uninstall Git hooks.
-    migrate    Migrating from husky to @funish/githooks.
-
-Use githooks <command> --help for more information about a command.
-```
-
-## Interfaces
-
-See it on [JSDoc](https://www.jsdocs.io/package/@funish/githooks).
-
-## Related Efforts
-
-- [Husky](https://github.com/typicode/husky)
+Please read our [Contributing Guide](../../CONTRIBUTING.md) before submitting a Pull Request to the project.
 
 ## License
 
-- [MIT](LICENSE) &copy; [Funish](https://funish.net/)
+[MIT](LICENSE) © [Funish](https://funish.net/)

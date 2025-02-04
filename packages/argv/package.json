@@ -1,7 +1,7 @@
 {
   "name": "@funish/argv",
-  "version": "0.0.4",
-  "description": "Programmatically parse command line parameters, powered by Funish.",
+  "version": "0.0.5-edge.1",
+  "description": "Type-safe command line argument parser with intuitive API and validation support, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
@@ -21,7 +21,16 @@
     "url": "git+https://github.com/funish/toolchains.git"
   },
   "keywords": [
-    "argv"
+    "argv",
+    "cli",
+    "command-line",
+    "arguments",
+    "parser",
+    "type-safe",
+    "typescript",
+    "validation",
+    "parameters",
+    "options"
   ],
   "author": {
     "name": "Funish",

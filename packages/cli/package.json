@@ -1,7 +1,7 @@
 {
   "name": "@funish/cli",
-  "version": "0.0.5",
-  "description": "Programmatically create command lines, powered by Funish.",
+  "version": "0.0.6-edge.1",
+  "description": "Elegant command-line interface builder with subcommands support and type safety, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
@@ -21,7 +21,16 @@
     "url": "git+https://github.com/funish/toolchains.git"
   },
   "keywords": [
-    "cli"
+    "cli",
+    "command-line",
+    "terminal",
+    "subcommands",
+    "type-safe",
+    "typescript",
+    "interactive",
+    "commander",
+    "program",
+    "framework"
   ],
   "author": {
     "name": "Funish",
@@ -36,7 +45,7 @@
   "dependencies": {
     "citty": "0.1.6",
     "defu": "6.1.4",
-    "pathe": "1.1.2",
-    "pkg-types": "1.1.0"
+    "pathe": "2.0.2",
+    "pkg-types": "1.3.1"
   }
 }

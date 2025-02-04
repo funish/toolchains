@@ -1,7 +1,7 @@
 {
   "name": "@funish/githooks-config",
-  "version": "0.0.2",
-  "description": "Shared githooks configuration, powered by Funish.",
+  "version": "0.0.3-edge.0",
+  "description": "Shared Git hooks configuration with pre-configured rules for code quality and commit messages, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
@@ -23,7 +23,15 @@
   "keywords": [
     "git",
     "hooks",
-    "husky"
+    "husky",
+    "config",
+    "configuration",
+    "pre-commit",
+    "commit-msg",
+    "lint-staged",
+    "typescript",
+    "development-tools",
+    "git-hooks"
   ],
   "author": {
     "name": "Funish",

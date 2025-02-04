@@ -1,3 +1,8 @@
+/**
+ * Core Git hooks management functionality
+ * @module @funish/githooks/githooks
+ */
+
 import { type SpawnSyncReturns, spawnSync } from "node:child_process";
 import {
   existsSync,
@@ -13,9 +18,34 @@ import { encode } from "ini";
 import { type GithooksName, loadGitConfig, loadGithooksConfig } from "./config";
 import { saveScript } from "./script";
 
+/**
+ * Helper function to execute git commands
+ * @param args Array of command arguments
+ * @returns Result of the git command execution
+ * @internal
+ */
 const git = (args: string[]): SpawnSyncReturns<Buffer> =>
   spawnSync("git", args, { stdio: "inherit" });
 
+/**
+ * Installs Git hooks in the specified directory
+ *
+ * @param path Directory to install hooks in (defaults to .git/hooks or .githooks)
+ * @param isSaveScript Whether to save the installation script (true/false or script name)
+ * @throws Error if installation fails
+ *
+ * @example
+ * ```ts
+ * // Install hooks in default location
+ * await githooksInstall();
+ *
+ * // Install hooks in custom directory
+ * await githooksInstall('.custom-hooks');
+ *
+ * // Install and save postinstall script
+ * await githooksInstall('.githooks', true);
+ * ```
+ */
 export async function githooksInstall(
   path?: string,
   isSaveScript?: boolean | string,
@@ -70,66 +100,176 @@ export async function githooksInstall(
   }
 }
 
+/**
+ * Sets up a specific Git hook with the provided script
+ *
+ * @param hooks Name of the hook to set up
+ * @param script Script content for the hook (optional)
+ * @throws Error if setup fails or prerequisites are not met
+ *
+ * @example
+ * ```ts
+ * // Set up pre-commit hook
+ * await githooksSetup('pre-commit', 'npm test');
+ *
+ * // Set up empty hook
+ * await githooksSetup('post-merge');
+ * ```
+ */
 export async function githooksSetup(
   hooks: GithooksName,
   script?: string | null,
 ) {
-  const config = await loadGithooksConfig();
-  const hooksPath = loadGitConfig().core.hooksPath;
+  try {
+    const config = await loadGithooksConfig();
+    const gitConfig = loadGitConfig();
 
-  if (config.hooks) {
-    consola.error(
-      "Setup failed, please change the hooks field in the configuration file to replace the setup command.",
-    );
-  } else if (!hooksPath) {
-    consola.error(
-      "Git hooks are not installed (try running githooks install [dir]).",
-    );
-  } else if (!existsSync(hooksPath)) {
-    consola.error(
-      `The ${hooksPath} directory does not exist (try running githooks install [dir]).`,
-    );
-  } else {
-    script
-      ? writeFileSync(`${hooksPath}/${hooks}`, `#!/bin/sh\n${script}`, {
-          mode: 0o0755,
-        })
-      : writeFileSync(`${hooksPath}/${hooks}`, "#!/bin/sh", {
-          mode: 0o0755,
-        });
+    if (!gitConfig.core) {
+      throw new Error("Git configuration is missing core section");
+    }
 
-    consola.success("Git hooks are set up successfully.");
-  }
-}
+    const hooksPath = gitConfig.core.hooksPath;
 
-export async function githooksUninstall() {
-  // Reset the git hooks directory to its default value.
-  git(["config", "--unset", "core.hooksPath"]);
-  // Remove the git hooks directory by nodejs api
-  rmSync(".git/hooks", { recursive: true });
-  // Restore the git config file
-  if (existsSync(".git/config.bak")) {
-    renameSync(".git/config.bak", ".git/config");
-  }
-  consola.success("Git hooks are uninstalled.");
-}
+    if (config.hooks) {
+      throw new Error(
+        "Setup failed: hooks field already exists in configuration file. Please modify the hooks field instead of using setup command.",
+      );
+    }
 
-export async function githooksMigrateFromHusky() {
-  const config = await loadGithooksConfig();
-  const hooksPath = loadGitConfig().core.hooksPath || config.path;
+    if (!hooksPath) {
+      throw new Error(
+        "Git hooks are not installed. Please run 'githooks install [dir]' first.",
+      );
+    }
 
-  if (config.hooks) {
-    consola.error(
-      "There are hooks in the configuration file that conflict with the husky migration process.",
-    );
-  } else if (!existsSync(hooksPath) || readdirSync(hooksPath).length === 0) {
-    renameSync(".husky", hooksPath);
+    // Ensure hooks directory exists with correct permissions
+    if (!existsSync(hooksPath)) {
+      mkdirSync(hooksPath, { recursive: true, mode: 0o755 });
+    }
+
+    const hookScript = script ? `#!/bin/sh\n${script}` : "#!/bin/sh";
+    const hookPath = `${hooksPath}/${hooks}`;
+
+    writeFileSync(hookPath, hookScript, {
+      mode: 0o0755,
+    });
+
     consola.success(
-      "Migration is complete, after that please deal with any conflicts manually.",
+      `Git hook '${hooks}' was set up successfully in ${hookPath}`,
     );
-  } else {
+  } catch (error) {
     consola.error(
-      `The ${hooksPath} directory already exists, please try to migrate it manually.`,
+      `Failed to setup git hook: ${
+        error instanceof Error ? error.message : String(error)
+      }`,
     );
+    throw error;
+  }
+}
+
+/**
+ * Uninstalls all Git hooks and restores original configuration
+ *
+ * - Removes hooks directory
+ * - Restores original Git config
+ * - Resets hooks path setting
+ *
+ * @throws Error if uninstallation fails
+ *
+ * @example
+ * ```ts
+ * await githooksUninstall();
+ * ```
+ */
+export async function githooksUninstall() {
+  try {
+    // Reset the git hooks directory to its default value
+    git(["config", "--unset", "core.hooksPath"]);
+
+    const hooksDir = ".git/hooks";
+
+    // Only attempt to remove if directory exists
+    if (existsSync(hooksDir)) {
+      rmSync(hooksDir, { recursive: true, force: true });
+      consola.info(`Removed git hooks directory: ${hooksDir}`);
+    }
+
+    // Restore git config backup if exists
+    const configBackup = ".git/config.bak";
+    if (existsSync(configBackup)) {
+      renameSync(configBackup, ".git/config");
+      consola.info("Restored git config from backup");
+    }
+
+    consola.success("Git hooks were successfully uninstalled");
+  } catch (error) {
+    consola.error(
+      `Failed to uninstall git hooks: ${
+        error instanceof Error ? error.message : String(error)
+      }`,
+    );
+    throw error;
+  }
+}
+
+/**
+ * Migrates hooks from Husky to @funish/githooks
+ *
+ * - Moves hooks from .husky directory to configured hooks path
+ * - Preserves hook scripts and permissions
+ * - Validates migration prerequisites
+ *
+ * @throws Error if migration fails or conflicts exist
+ *
+ * @example
+ * ```ts
+ * await githooksMigrateFromHusky();
+ * ```
+ */
+export async function githooksMigrateFromHusky() {
+  try {
+    const config = await loadGithooksConfig();
+    const gitConfig = loadGitConfig();
+
+    if (!gitConfig.core) {
+      throw new Error("Git configuration is missing core section");
+    }
+
+    const hooksPath = gitConfig.core.hooksPath || config.path;
+
+    if (!hooksPath) {
+      throw new Error(
+        "No hooks path configured in git config or githooks config",
+      );
+    }
+
+    if (config.hooks) {
+      throw new Error(
+        "Migration failed: hooks field exists in configuration file that would conflict with husky migration.",
+      );
+    }
+
+    const huskyDir = ".husky";
+    if (!existsSync(huskyDir)) {
+      throw new Error("Husky directory '.husky' not found");
+    }
+
+    if (existsSync(hooksPath) && readdirSync(hooksPath).length > 0) {
+      throw new Error(
+        `The ${hooksPath} directory already exists and is not empty. Please migrate manually to avoid conflicts.`,
+      );
+    }
+
+    renameSync(huskyDir, hooksPath);
+    consola.success(
+      `Successfully migrated husky hooks to ${hooksPath}. Please review the migrated hooks for any needed adjustments.`,
+    );
+  } catch (error) {
+    consola.error(
+      `Failed to migrate from husky: ${
+        error instanceof Error ? error.message : String(error)
+      }`,
+    );
+    throw error;
   }
 }

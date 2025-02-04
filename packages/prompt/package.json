@@ -1,7 +1,7 @@
 {
   "name": "@funish/prompt",
-  "version": "0.0.4",
-  "description": "Programmatically create interactive prompts, powered by Funish.",
+  "version": "0.0.5-edge.1",
+  "description": "Interactive command-line prompts with beautiful UI and type safety, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
@@ -21,7 +21,16 @@
     "url": "git+https://github.com/funish/toolchains.git"
   },
   "keywords": [
-    "prompt"
+    "prompt",
+    "cli",
+    "interactive",
+    "command-line",
+    "user-input",
+    "terminal",
+    "type-safe",
+    "typescript",
+    "inquirer",
+    "ui"
   ],
   "author": {
     "name": "Funish",
@@ -34,6 +43,6 @@
   },
   "homepage": "https://github.com/funish/toolchains#readme",
   "dependencies": {
-    "consola": "3.2.3"
+    "consola": "3.4.0"
   }
 }

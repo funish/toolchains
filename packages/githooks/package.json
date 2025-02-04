@@ -1,7 +1,7 @@
 {
   "name": "@funish/githooks",
-  "version": "0.0.5",
-  "description": "Programmatically create git hooks, powered by Funish.",
+  "version": "0.0.6-edge.1",
+  "description": "Modern Git hooks management with type-safe configuration and easy integration, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
@@ -27,7 +27,15 @@
     "git",
     "hooks",
     "githooks",
-    "husky"
+    "husky",
+    "pre-commit",
+    "commit-msg",
+    "type-safe",
+    "typescript",
+    "automation",
+    "workflow",
+    "git-hooks",
+    "development-tools"
   ],
   "author": {
     "name": "Funish",
@@ -41,14 +49,14 @@
   "homepage": "https://github.com/funish/toolchains#readme",
   "dependencies": {
     "@funish/cli": "workspace:*",
-    "c12": "1.10.0",
+    "c12": "2.0.1",
     "cac": "6.7.14",
-    "consola": "3.2.3",
+    "consola": "3.4.0",
     "defu": "6.1.4",
-    "ini": "4.1.2",
-    "pkg-types": "1.1.0"
+    "ini": "5.0.0",
+    "pkg-types": "1.3.1"
   },
   "devDependencies": {
-    "@types/ini": "4.1.0"
+    "@types/ini": "4.1.1"
   }
 }

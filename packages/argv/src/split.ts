@@ -1,6 +1,29 @@
+/**
+ * String splitting based command line argument parser
+ * @module @funish/argv/split
+ */
+
 import { parseArgc } from "./argc";
 import type { Args } from "./types";
 
+/**
+ * Parses command line arguments using string splitting
+ * Supports the following formats:
+ * - Long options: --name=value, --flag
+ * - Short options: -n=value, -f
+ * - Negated flags: --no-flag
+ * - Positional arguments
+ *
+ * This parser is simpler than the regexp parser but handles most common cases
+ *
+ * @param argv Array of command line argument strings to parse
+ * @returns Object containing parsed arguments with appropriate types
+ * @example
+ * ```ts
+ * parserSplit(['--name=value', '-f', '--no-debug']);
+ * // Returns: { name: 'value', f: true, debug: false, _: [] }
+ * ```
+ */
 export function parserSplit(argv: string[]) {
   const args: Args = { _: [] };
 

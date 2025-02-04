@@ -1,7 +1,7 @@
 {
   "name": "@funish/lint",
-  "version": "0.0.2",
-  "description": "Integrated one-click Linter, powered by Funish.",
+  "version": "0.0.3-edge.0",
+  "description": "Comprehensive linting solution for code quality and commit messages, with staged files support and Git hooks integration, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
@@ -30,7 +30,13 @@
     "stylelint",
     "prettier",
     "commitlint",
-    "lint-staged"
+    "lint-staged",
+    "code-quality",
+    "git-hooks",
+    "typescript",
+    "javascript",
+    "css",
+    "formatting"
   ],
   "author": {
     "name": "Funish",
@@ -44,12 +50,12 @@
   "homepage": "https://github.com/funish/toolchains#readme",
   "dependencies": {
     "@funish/cli": "workspace:*",
-    "c12": "1.10.0",
-    "consola": "3.2.3",
+    "c12": "2.0.1",
+    "consola": "3.4.0",
     "magic-regexp": "0.8.0",
-    "micromatch": "4.0.5"
+    "micromatch": "4.0.8"
   },
   "devDependencies": {
-    "@types/micromatch": "4.0.7"
+    "@types/micromatch": "4.0.9"
   }
 }

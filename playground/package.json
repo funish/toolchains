@@ -1,8 +1,26 @@
 {
+  "name": "@funish/playground",
   "private": true,
+  "scripts": {
+    "test": "tsx tests/run-tests.ts",
+    "test:argv": "tsx tests/argv.test.ts",
+    "test:bench": "tsx tests/bench.test.ts",
+    "test:bump": "tsx tests/bump.test.ts",
+    "test:cli": "tsx tests/cli.test.ts",
+    "test:githooks": "tsx tests/githooks.test.ts",
+    "test:lint": "tsx tests/lint.test.ts",
+    "test:prompt": "tsx tests/prompt.test.ts",
+    "test:scaffolding": "tsx tests/scaffolding.test.ts"
+  },
   "dependencies": {
     "@funish/argv": "workspace:*",
     "@funish/bench": "workspace:*",
+    "@funish/bump": "workspace:*",
+    "@funish/cli": "workspace:*",
+    "@funish/githooks": "workspace:*",
+    "@funish/lint": "workspace:*",
+    "@funish/prompt": "workspace:*",
+    "@funish/scaffolding": "workspace:*",
     "citty": "0.1.6",
     "minimist": "1.2.8",
     "mri": "1.2.0",
@@ -11,6 +29,9 @@
   "devDependencies": {
     "@types/benchmark": "2.1.5",
     "@types/minimist": "1.2.5",
-    "@types/yargs-parser": "21.0.3"
+    "@types/node": "22.13.1",
+    "@types/yargs-parser": "21.0.3",
+    "tsx": "4.19.2",
+    "typescript": "5.7.3"
   }
 }

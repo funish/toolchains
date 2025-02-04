@@ -1,7 +1,7 @@
 {
   "name": "@funish/bench",
-  "version": "0.0.2",
-  "description": "Programmatically create benchmark tests, powered by Funish.",
+  "version": "0.0.3-edge.1",
+  "description": "Simple and powerful benchmarking toolkit for JavaScript/TypeScript applications, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
@@ -23,7 +23,14 @@
   "keywords": [
     "bench",
     "benchmark",
-    "performance"
+    "performance",
+    "testing",
+    "profiling",
+    "metrics",
+    "measurement",
+    "typescript",
+    "javascript",
+    "optimization"
   ],
   "author": {
     "name": "Funish",
