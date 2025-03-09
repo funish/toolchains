@@ -107,9 +107,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 - 📫 [Report bugs or request features](https://github.com/funish/toolchains/issues)
-- 💬 [Join our community](https://funish.net/community)
-- 📖 [Read our documentation](https://funish.net/docs)
 
 ---
 
-&copy; [Funish](https://funish.net/) - Building better development tools together.
+[MIT](LICENSE) © [Funish](https://funish.net/)
