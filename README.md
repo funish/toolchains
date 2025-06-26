@@ -5,6 +5,19 @@
 
 > A comprehensive collection of development toolchains for modern JavaScript/TypeScript projects, powered by [Funish](https://funish.net/).
 
+> **⚠️ MIGRATION NOTICE: This project has been consolidated into [@funish/basis](https://github.com/funish/basis)**
+> 
+> All individual packages in this repository have been deprecated and replaced by the unified `@funish/basis` toolkit. 
+> 
+> **🚀 For new projects, please use:**
+> ```bash
+> pnpm install -g @funish/basis
+> ```
+> 
+> **📖 Migration guide and documentation:** https://github.com/funish/basis
+> 
+> ---
+
 ## Features
 
 - 🛠️ **Complete Toolset**: Everything you need for modern JS/TS development
